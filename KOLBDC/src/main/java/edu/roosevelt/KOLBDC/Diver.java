@@ -15,5 +15,5 @@ public class Diver {
     private int coins;
     private String upgrades;
     private String clears;
-       
+    private String pass;
 }
