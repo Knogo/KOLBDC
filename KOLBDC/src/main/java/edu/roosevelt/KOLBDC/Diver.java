@@ -7,7 +7,7 @@ package edu.roosevelt.KOLBDC;
 
 /**
  *
- * @author kenom
+ * @author kenom and level
  */
 public class Diver {
     private int ID;
@@ -15,5 +15,5 @@ public class Diver {
     private int coins;
     private String upgrades;
     private String clears;
-    private String cat;
+       
 }
