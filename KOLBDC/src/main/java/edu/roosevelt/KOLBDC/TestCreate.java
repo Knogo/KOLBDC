@@ -40,6 +40,11 @@ public class TestCreate {
             }
         }
         
+        String isql = "INSERT INTO DIVER VALUES (1, 'bob', 'cat', 5, 'vision', 'wind dungeon')";
+        try {
+                conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {   }
+        
         succeeds = false;
 
         while (!succeeds) {
