@@ -65,20 +65,12 @@ public class TestCreate {
             }
         }
         
-        isql = "INSERT INTO CREATOR VALUES (2, 'Lux', 'Ezreal<3', '20', 'vision', 'fire dungeon')";
+        isql = "INSERT INTO CREATOR VALUES (2, 'Lux', 'Ezreal', 20, 'vision', 'fire dungeon')";
         try {
             conn.createStatement().execute(isql);
-        } catch (SQLException sQLException) {
-        }
+        } catch (SQLException sQLException) {   }
 
         succeeds = false;
-        
-        
-        isql = "INSERT INTO ADMIN VALUES (3, 'LvL', 'Upppa')";
-        try {
-            conn.createStatement().execute(isql);
-        } catch (SQLException sQLException) {
-        }
          
         while (!succeeds) {
             String sql = "CREATE TABLE ADMIN (";
@@ -95,13 +87,12 @@ public class TestCreate {
             }
         }
         
-        succeeds = false;
-        
-        isql = "(246,'Light dungeon', 'Lux', 2, 'anything', 'Garen 46 pts', 5 )";
+        isql = "INSERT INTO ADMIN VALUES (3, 'LvL', 'Upppa')";
         try {
             conn.createStatement().execute(isql);
-        } catch (SQLException sQLException) {
-        }
+        } catch (SQLException sQLException) {   }
+        
+        succeeds = false;
         
         while (!succeeds) {
             String sql = "CREATE TABLE DUNGEON (";
@@ -121,5 +112,10 @@ public class TestCreate {
                 conn.createStatement().execute("DROP TABLE DUNGEON");
             }
         }
+        
+        isql = "INSERT INTO DUNGEON VALUES (246, 'Light dungeon', 'Lux', 2, 'anything', 'Garen 46 pts', 5)";
+        try {
+            conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {   }
     }
 }
