@@ -65,8 +65,21 @@ public class TestCreate {
             }
         }
         
-        succeeds = false;
+        isql = "INSERT INTO CREATOR VALUES (2, 'Lux', 'Ezreal<3', '20', 'vision', 'fire dungeon')";
+        try {
+            conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {
+        }
 
+        succeeds = false;
+        
+        
+        isql = "INSERT INTO ADMIN VALUES (3, 'LvL', 'Upppa')";
+        try {
+            conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {
+        }
+         
         while (!succeeds) {
             String sql = "CREATE TABLE ADMIN (";
             sql = sql + "ID INTEGER PRIMARY KEY,";
@@ -83,7 +96,13 @@ public class TestCreate {
         }
         
         succeeds = false;
-
+        
+        isql = "(246,'Light dungeon', 'Lux', 2, 'anything', 'Garen 46 pts', 5 )";
+        try {
+            conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {
+        }
+        
         while (!succeeds) {
             String sql = "CREATE TABLE DUNGEON (";
             sql = sql + "DID INTEGER PRIMARY KEY,";
