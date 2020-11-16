@@ -85,7 +85,7 @@ public class TestCreate {
             sql = sql + "NAME VARCHAR(30),";
             sql = sql + "CREATOR VARCHAR(30),";
             sql = sql + "ID INTEGER,";
-            sql = sql + "LAYOUT VARCHAR(30)";
+            sql = sql + "LAYOUT VARCHAR(30),";
             sql = sql + "HIGHSCORE VARCHAR(30),";
             sql = sql + "MINMOVES INTEGER)";
 
