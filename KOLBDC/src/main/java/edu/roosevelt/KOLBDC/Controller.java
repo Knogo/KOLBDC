@@ -24,7 +24,7 @@ public class Controller {
     DiverRepository divDB; //For Divers
     
     @Autowired
-    CreatorRespository creDB; //For Creators
+    CreatorRepository creDB; //For Creators
 
     @Autowired
     AdminRepository adminDB; //For Creators
