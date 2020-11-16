@@ -1,0 +1,16 @@
+<body>
+    <h1>List of Admins</h1>
+    <button class="main" routerLink = "/diverlist">Diver List</button>
+    <button class="main" routerLink = "/creatorlist">Creator List</button>
+    <button class="main" routerLink = "/dungeonlist">Dungeon List</button>
+    <table>
+       <tr>
+          <th>ID</th>
+          <th>Name</th>
+       </tr>
+       <tr *ngFor="let each of admin">
+          <td>{{each.id}}</td>
+          <td>{{each.name}}</td>
+       </tr>
+    </table>
+ </body>

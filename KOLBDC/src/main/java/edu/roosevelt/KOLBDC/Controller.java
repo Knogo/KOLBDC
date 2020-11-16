@@ -119,7 +119,7 @@ public class Controller {
                 return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
             }
         } else {
-            List<Admin> result = (List<Admin>)adminDB.findAll();
+            List<Dungeon> result = (List<Dungeon>)dunDB.findAll();
             if (result == null || result.isEmpty()) {
                 return new ResponseEntity(result, HttpStatus.NO_CONTENT);
             } else {

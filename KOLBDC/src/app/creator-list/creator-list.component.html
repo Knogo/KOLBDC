@@ -1,0 +1,22 @@
+<body>
+    <h1>List of Creators</h1>
+    <button class="main" routerLink = "/diverlist">Diver List</button>
+    <button class="main" routerLink = "/adminlist">Admin List</button>
+    <button class="main" routerLink = "/dungeonlist">Dungeon List</button>
+    <table>
+       <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Coins</th>
+          <th>Upgrades</th>
+          <th>Clears</th>
+       </tr>
+       <tr *ngFor="let each of creator">
+          <td>{{each.id}}</td>
+          <td>{{each.name}}</td>
+          <td>{{each.coins}}</td>
+          <td>{{each.upgrades}}</td>
+          <td>{{each.clears}}</td>
+       </tr>
+    </table>
+ </body>
