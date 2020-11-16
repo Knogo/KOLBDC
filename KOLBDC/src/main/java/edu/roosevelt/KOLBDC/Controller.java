@@ -7,14 +7,20 @@ package edu.roosevelt.KOLBDC;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -119,6 +125,134 @@ public class Controller {
             } else {
                 return new ResponseEntity(result, HttpStatus.OK);
             }
+        }
+    }
+    
+    @PostMapping(value = {"/diver/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Diver> createDiver(@RequestBody @Valid final Diver d) {
+        if (divDB.existsById(d.getID())) {
+            return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
+        } else {
+            divDB.save(d);
+            return new ResponseEntity(d, HttpStatus.OK);
+        }
+    }
+    
+    @PutMapping(value = {"/diver/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Diver> updateDiver(@RequestBody @Valid final Diver d) {
+        if (divDB.existsById(d.getID())) {
+            divDB.save(d);
+            return new ResponseEntity(d, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @DeleteMapping({"/diver/{id}", "/{id}"})
+    public ResponseEntity<Diver> deleteDiver(@PathVariable("id") final int ID) {
+        Diver d = new Diver(); d.setID(ID);
+        if (divDB.existsById(d.getID())) {
+            d = divDB.findByID(ID);
+            divDB.deleteById(ID);
+            return new ResponseEntity(d, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PostMapping(value = {"/creator/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Creator> createCreator(@RequestBody @Valid final Creator c) {
+        if (creDB.existsById(c.getID())) {
+            return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
+        } else {
+            creDB.save(c);
+            return new ResponseEntity(c, HttpStatus.OK);
+        }
+    }
+    
+    @PutMapping(value = {"/creator/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Creator> updateCreator(@RequestBody @Valid final Creator c) {
+        if (creDB.existsById(c.getID())) {
+            creDB.save(c);
+            return new ResponseEntity(c, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @DeleteMapping({"/creator/{id}", "/{id}"})
+    public ResponseEntity<Creator> deleteCreator(@PathVariable("id") final int ID) {
+        Creator c = new Creator(); c.setID(ID);
+        if (creDB.existsById(c.getID())) {
+            c = creDB.findByID(ID);
+            creDB.deleteById(ID);
+            return new ResponseEntity(c, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PostMapping(value = {"/admin/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Admin> createAdmin(@RequestBody @Valid final Admin a) {
+        if (adminDB.existsById(a.getID())) {
+            return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
+        } else {
+            adminDB.save(a);
+            return new ResponseEntity(a, HttpStatus.OK);
+        }
+    }
+    
+    @PutMapping(value = {"/admin/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Admin> updateAdmin(@RequestBody @Valid final Admin a) {
+        if (adminDB.existsById(a.getID())) {
+            adminDB.save(a);
+            return new ResponseEntity(a, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @DeleteMapping({"/admin/{id}", "/{id}"})
+    public ResponseEntity<Admin> deleteAdmin(@PathVariable("id") final int ID) {
+        Admin a = new Admin(); a.setID(ID);
+        if (adminDB.existsById(a.getID())) {
+            a = adminDB.findByID(ID);
+            adminDB.deleteById(ID);
+            return new ResponseEntity(a, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PostMapping(value = {"/dungeon/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Dungeon> createDungeon(@RequestBody @Valid final Dungeon d) {
+        if (dunDB.existsById(d.getID())) {
+            return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
+        } else {
+            dunDB.save(d);
+            return new ResponseEntity(d, HttpStatus.OK);
+        }
+    }
+    
+    @PutMapping(value = {"/dungeon/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Dungeon> updateDungeon(@RequestBody @Valid final Dungeon d) {
+        if (dunDB.existsById(d.getID())) {
+            dunDB.save(d);
+            return new ResponseEntity(d, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @DeleteMapping({"/dungeon/{did}", "/{did}"})
+    public ResponseEntity<Dungeon> deleteDungeon(@PathVariable("did") final int DID) {
+        Dungeon d = new Dungeon(); d.setDID(DID);
+        if (dunDB.existsById(d.getID())) {
+            d = dunDB.findByDID(DID);
+            dunDB.deleteById(DID);
+            return new ResponseEntity(d, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
         }
     }
 }
