@@ -22,7 +22,7 @@ public class Dungeon implements Serializable {
     private String name;
     private String creator;
     private int ID; //creator ID (for easier deletion)
-    private String[][] layout;
+    private String layout;
     private String highscore; //The name of the high-scorer
     private int minmoves;
 
@@ -58,11 +58,11 @@ public class Dungeon implements Serializable {
         this.ID = ID;
     }
 
-    public String[][] getLayout() {
+    public String getLayout() {
         return layout;
     }
 
-    public void setLayout(String[][] layout) {
+    public void setLayout(String layout) {
         this.layout = layout;
     }
 
