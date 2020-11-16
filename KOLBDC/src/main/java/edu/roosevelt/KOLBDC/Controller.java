@@ -33,7 +33,10 @@ public class Controller {
     CreatorRepository creDB; //For Creators
 
     @Autowired
-    AdminRepository adminDB; //For Creators
+    AdminRepository adminDB; //For Admins
+    
+    @Autowired
+    DungeonRepository dunDB; //For Dungeons
     
     @GetMapping({"/diver/","/diver/{id}"})
     public ResponseEntity<List<Diver>> getDivers(@PathVariable(value = "id", required = false) final Integer id) {
@@ -84,6 +87,27 @@ public class Controller {
                 Admin a = adminDB.findByID(id);
                 List<Admin> result = new ArrayList();
                 result.add(a);
+                return new ResponseEntity(result, HttpStatus.OK);
+            } else {
+                return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
+            }
+        } else {
+            List<Admin> result = (List<Admin>)adminDB.findAll();
+            if (result == null || result.isEmpty()) {
+                return new ResponseEntity(result, HttpStatus.NO_CONTENT);
+            } else {
+                return new ResponseEntity(result, HttpStatus.OK);
+            }
+        }
+    }
+    
+    @GetMapping({"/dungeon/","/dungeon/{did}"})
+    public ResponseEntity<List<Dungeon>> getDungeons(@PathVariable(value = "did", required = false) final Integer did) {
+        if (did != null) {
+            if (dunDB.existsById(did)) {
+                Dungeon d = dunDB.findByDID(did);
+                List<Dungeon> result = new ArrayList();
+                result.add(d);
                 return new ResponseEntity(result, HttpStatus.OK);
             } else {
                 return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
