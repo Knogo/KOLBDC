@@ -28,8 +28,8 @@ public class TestCreate {
             sql = sql + "NAME VARCHAR(30),";
             sql = sql + "PASSWORD VARCHAR(30),";
             sql = sql + "COINS INTEGER,";
-            sql = sql + "UPGRADES VARCHAR(30),";
-            sql = sql + "CLEARS VARCHAR(30))";
+            sql = sql + "UPGRADES VARCHAR(200),";
+            sql = sql + "CLEARS VARCHAR(200))";
 
             try {
                 conn.createStatement().execute(sql);
@@ -53,8 +53,8 @@ public class TestCreate {
             sql = sql + "NAME VARCHAR(30),";
             sql = sql + "PASSWORD VARCHAR(30),";
             sql = sql + "COINS INTEGER,";
-            sql = sql + "UPGRADES VARCHAR(30),";
-            sql = sql + "CLEARS VARCHAR(30))";
+            sql = sql + "UPGRADES VARCHAR(200),";
+            sql = sql + "CLEARS VARCHAR(200))";
 
             try {
                 conn.createStatement().execute(sql);
@@ -98,9 +98,8 @@ public class TestCreate {
             String sql = "CREATE TABLE DUNGEON (";
             sql = sql + "DID INTEGER PRIMARY KEY,";
             sql = sql + "NAME VARCHAR(30),";
-            sql = sql + "CREATOR VARCHAR(30),";
-            sql = sql + "ID INTEGER,";
-            sql = sql + "LAYOUT VARCHAR(30),";
+            sql = sql + "ID INTEGER REFERENCES CREATOR(ID),";
+            sql = sql + "LAYOUT VARCHAR(200),";
             sql = sql + "HIGHSCORE VARCHAR(30),";
             sql = sql + "MINMOVES INTEGER)";
 
@@ -113,7 +112,7 @@ public class TestCreate {
             }
         }
         
-        isql = "INSERT INTO DUNGEON VALUES (246, 'Light dungeon', 'Lux', 2, 'anything', 'Garen 46 pts', 5)";
+        isql = "INSERT INTO DUNGEON VALUES (246, 'Light dungeon', 2, 'anything', 'Garen 46 pts', 5)";
         try {
             conn.createStatement().execute(isql);
         } catch (SQLException sQLException) {   }

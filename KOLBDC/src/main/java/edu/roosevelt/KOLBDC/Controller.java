@@ -49,9 +49,7 @@ public class Controller {
         if (id != null) {
             if (divDB.existsById(id)) {
                 Diver d = divDB.findByID(id);
-                List<Diver> result = new ArrayList();
-                result.add(d);
-                return new ResponseEntity(result, HttpStatus.OK);
+                return new ResponseEntity(d, HttpStatus.OK);
             } else {
                 return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
             }
@@ -70,9 +68,7 @@ public class Controller {
         if (id != null) {
             if (creDB.existsById(id)) {
                 Creator c = creDB.findByID(id);
-                List<Creator> result = new ArrayList();
-                result.add(c);
-                return new ResponseEntity(result, HttpStatus.OK);
+                return new ResponseEntity(c, HttpStatus.OK);
             } else {
                 return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
             }
@@ -91,9 +87,7 @@ public class Controller {
         if (id != null) {
             if (adminDB.existsById(id)) {
                 Admin a = adminDB.findByID(id);
-                List<Admin> result = new ArrayList();
-                result.add(a);
-                return new ResponseEntity(result, HttpStatus.OK);
+                return new ResponseEntity(a, HttpStatus.OK);
             } else {
                 return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
             }
@@ -112,9 +106,7 @@ public class Controller {
         if (did != null) {
             if (dunDB.existsById(did)) {
                 Dungeon d = dunDB.findByDID(did);
-                List<Dungeon> result = new ArrayList();
-                result.add(d);
-                return new ResponseEntity(result, HttpStatus.OK);
+                return new ResponseEntity(d, HttpStatus.OK);
             } else {
                 return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
             }

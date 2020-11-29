@@ -20,7 +20,6 @@ public class Dungeon implements Serializable {
     @Id
     private int DID;
     private String name;
-    private String creator;
     private int ID; //creator ID (for easier deletion)
     private String layout;
     private String highscore; //The name of the high-scorer
@@ -40,14 +39,6 @@ public class Dungeon implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
     }
 
     public int getID() {
