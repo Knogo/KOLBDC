@@ -61,6 +61,7 @@ public class TestCreate {
                 System.out.println("Created CREATOR");
                 succeeds = true;
             } catch (SQLException sqle) {
+                conn.createStatement().execute("DROP TABLE DUNGEON");
                 conn.createStatement().execute("DROP TABLE CREATOR");
             }
         }
@@ -99,7 +100,7 @@ public class TestCreate {
             sql = sql + "DID INTEGER PRIMARY KEY,";
             sql = sql + "NAME VARCHAR(30),";
             sql = sql + "ID INTEGER REFERENCES CREATOR(ID),";
-            sql = sql + "LAYOUT VARCHAR(200),";
+            sql = sql + "LAYOUT VARCHAR(2000),";
             sql = sql + "HIGHSCORE VARCHAR(30),";
             sql = sql + "MINMOVES INTEGER)";
 
@@ -112,7 +113,19 @@ public class TestCreate {
             }
         }
         
-        isql = "INSERT INTO DUNGEON VALUES (246, 'Light dungeon', 2, 'anything', 'Garen 46 pts', 5)";
+        isql = "INSERT INTO DUNGEON VALUES (246, 'Test dungeon1', 2, '5, 5, [1, 1, 1, 1, 1, 2, 4, 1, 0, 3, 1, 0, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Garen', 5)";
+        try {
+            conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {   }
+        isql = "INSERT INTO DUNGEON VALUES (5310, 'Test dungeon2', 2, '5, 5, [1, 1, 1, 1, 1, 2, 0, 1, 0, 3, 1, 0, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Morgana', 5)";
+        try {
+            conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {   }
+        isql = "INSERT INTO DUNGEON VALUES (131, 'Test dungeon3', 2, '5, 5, [1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Graves', 5)";
+        try {
+            conn.createStatement().execute(isql);
+        } catch (SQLException sQLException) {   }
+        isql = "INSERT INTO DUNGEON VALUES (2000, 'Test dungeon5', 2, '20, 20, [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3]', 'Fizz', 5)";
         try {
             conn.createStatement().execute(isql);
         } catch (SQLException sQLException) {   }
