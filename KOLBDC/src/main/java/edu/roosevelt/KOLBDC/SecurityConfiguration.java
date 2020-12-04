@@ -10,8 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- *
- * @author kenom
+ * Note, this is a by-pass of spring's security -- since only jpa/session based validation is allowed.
  */
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {

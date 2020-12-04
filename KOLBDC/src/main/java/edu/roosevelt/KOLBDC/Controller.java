@@ -37,9 +37,6 @@ public class Controller {
     
     @Autowired
     CreatorRepository creDB; //For Creators
-
-    @Autowired
-    AdminRepository adminDB; //For Admins
     
     @Autowired
     DungeonRepository dunDB; //For Dungeons
@@ -74,25 +71,6 @@ public class Controller {
             }
         } else {
             List<Creator> result = (List<Creator>)creDB.findAll();
-            if (result == null || result.isEmpty()) {
-                return new ResponseEntity(result, HttpStatus.NO_CONTENT);
-            } else {
-                return new ResponseEntity(result, HttpStatus.OK);
-            }
-        }
-    }
-    
-    @GetMapping({"/admin/","/admin/{id}"})
-    public ResponseEntity<List<Admin>> getAdmins(@PathVariable(value = "id", required = false) final Integer id) {
-        if (id != null) {
-            if (adminDB.existsById(id)) {
-                Admin a = adminDB.findByID(id);
-                return new ResponseEntity(a, HttpStatus.OK);
-            } else {
-                return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
-            }
-        } else {
-            List<Admin> result = (List<Admin>)adminDB.findAll();
             if (result == null || result.isEmpty()) {
                 return new ResponseEntity(result, HttpStatus.NO_CONTENT);
             } else {
@@ -184,41 +162,9 @@ public class Controller {
         }
     }
     
-    @PostMapping(value = {"/admin/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Admin> createAdmin(@RequestBody @Valid final Admin a) {
-        if (adminDB.existsById(a.getID())) {
-            return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
-        } else {
-            adminDB.save(a);
-            return new ResponseEntity(a, HttpStatus.OK);
-        }
-    }
-    
-    @PutMapping(value = {"/admin/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Admin> updateAdmin(@RequestBody @Valid final Admin a) {
-        if (adminDB.existsById(a.getID())) {
-            adminDB.save(a);
-            return new ResponseEntity(a, HttpStatus.OK);
-        } else {
-            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
-        }
-    }
-    
-    @DeleteMapping({"/admin/{id}", "/{id}"})
-    public ResponseEntity<Admin> deleteAdmin(@PathVariable("id") final int ID) {
-        Admin a = new Admin(); a.setID(ID);
-        if (adminDB.existsById(a.getID())) {
-            a = adminDB.findByID(ID);
-            adminDB.deleteById(ID);
-            return new ResponseEntity(a, HttpStatus.OK);
-        } else {
-            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
-        }
-    }
-    
     @PostMapping(value = {"/dungeon/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Dungeon> createDungeon(@RequestBody @Valid final Dungeon d) {
-        if (dunDB.existsById(d.getID())) {
+        if (dunDB.existsById(d.getDID())) {
             return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
         } else {
             dunDB.save(d);
@@ -228,7 +174,7 @@ public class Controller {
     
     @PutMapping(value = {"/dungeon/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Dungeon> updateDungeon(@RequestBody @Valid final Dungeon d) {
-        if (dunDB.existsById(d.getID())) {
+        if (dunDB.existsById(d.getDID())) {
             dunDB.save(d);
             return new ResponseEntity(d, HttpStatus.OK);
         } else {
@@ -239,7 +185,7 @@ public class Controller {
     @DeleteMapping({"/dungeon/{did}", "/{did}"})
     public ResponseEntity<Dungeon> deleteDungeon(@PathVariable("did") final int DID) {
         Dungeon d = new Dungeon(); d.setDID(DID);
-        if (dunDB.existsById(d.getID())) {
+        if (dunDB.existsById(d.getDID())) {
             d = dunDB.findByDID(DID);
             dunDB.deleteById(DID);
             return new ResponseEntity(d, HttpStatus.OK);

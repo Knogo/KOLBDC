@@ -20,9 +20,9 @@ public class Dungeon implements Serializable {
     @Id
     private int DID;
     private String name;
-    private int ID; //creator ID (for easier deletion)
+    private String cname; //creator name (they can set as they like -- even if deleted, dungeon should persist)
     private String layout;
-    private String highscore; //The name of the high-scorer
+    private String highscore; //The name of the high-scorer (even if user is deleted, name should persist)
     private int minmoves;
 
     public int getDID() {
@@ -41,12 +41,12 @@ public class Dungeon implements Serializable {
         this.name = name;
     }
 
-    public int getID() {
-        return ID;
+    public String getCname() {
+        return cname;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
     public String getLayout() {
@@ -72,13 +72,12 @@ public class Dungeon implements Serializable {
     public void setMinmoves(int minmoves) {
         this.minmoves = minmoves;
     }
-
+    
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + this.DID;
-        hash = 17 * hash + this.ID;
-        hash = 17 * hash + this.minmoves;
+        int hash = 5;
+        hash = 43 * hash + this.DID;
+        hash = 43 * hash + this.minmoves;
         return hash;
     }
 
@@ -97,14 +96,11 @@ public class Dungeon implements Serializable {
         if (this.DID != other.DID) {
             return false;
         }
-        if (this.ID != other.ID) {
-            return false;
-        }
         if (this.minmoves != other.minmoves) {
             return false;
         }
         return true;
     }
-    
+
     
 }

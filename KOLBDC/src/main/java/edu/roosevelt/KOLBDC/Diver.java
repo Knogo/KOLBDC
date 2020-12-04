@@ -19,10 +19,9 @@ import javax.persistence.Table;
 public class Diver implements Serializable  {
     @Id
     private int ID;
-    private String name;
-    private String password;
     private int coins;
-    private String upgrades;
+    private int vision;
+    private int keys;
     private String clears;
 
     public int getID() {
@@ -33,22 +32,6 @@ public class Diver implements Serializable  {
         this.ID = ID;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public int getCoins() {
         return coins;
     }
@@ -57,12 +40,20 @@ public class Diver implements Serializable  {
         this.coins = coins;
     }
 
-    public String getUpgrades() {
-        return upgrades;
+    public int getVision() {
+        return vision;
     }
 
-    public void setUpgrades(String upgrades) {
-        this.upgrades = upgrades;
+    public void setVision(int vision) {
+        this.vision = vision;
+    }
+
+    public int getKeys() {
+        return keys;
+    }
+
+    public void setKeys(int keys) {
+        this.keys = keys;
     }
 
     public String getClears() {
@@ -72,12 +63,14 @@ public class Diver implements Serializable  {
     public void setClears(String clears) {
         this.clears = clears;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + this.ID;
-        hash = 47 * hash + this.coins;
+        hash = 67 * hash + this.ID;
+        hash = 67 * hash + this.coins;
+        hash = 67 * hash + this.vision;
+        hash = 67 * hash + this.keys;
         return hash;
     }
 
@@ -99,6 +92,14 @@ public class Diver implements Serializable  {
         if (this.coins != other.coins) {
             return false;
         }
+        if (this.vision != other.vision) {
+            return false;
+        }
+        if (this.keys != other.keys) {
+            return false;
+        }
         return true;
     }
+
+    
 }

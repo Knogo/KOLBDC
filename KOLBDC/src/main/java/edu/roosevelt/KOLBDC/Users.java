@@ -12,16 +12,16 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Level
+ * @author kenom
  */
 @Entity
-@Table(name = "CREATOR")
-public class Creator implements Serializable {
+@Table(name = "USERS")
+public class Users implements Serializable {
     @Id
     private int ID;
-    private int coins;
-    private int maxdims;
-    private String clears;
+    private String name;
+    private String password;
+    private String role;
 
     public int getID() {
         return ID;
@@ -31,36 +31,34 @@ public class Creator implements Serializable {
         this.ID = ID;
     }
 
-    public int getCoins() {
-        return coins;
+    public String getName() {
+        return name;
     }
 
-    public void setCoins(int coins) {
-        this.coins = coins;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getMaxdims() {
-        return maxdims;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMaxdims(int maxdims) {
-        this.maxdims = maxdims;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public String getRole() {
+        return role;
     }
 
-    public String getClears() {
-        return clears;
-    }
-
-    public void setClears(String clears) {
-        this.clears = clears;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
         hash = 59 * hash + this.ID;
-        hash = 59 * hash + this.coins;
-        hash = 59 * hash + this.maxdims;
         return hash;
     }
 
@@ -75,18 +73,10 @@ public class Creator implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Creator other = (Creator) obj;
+        final Users other = (Users) obj;
         if (this.ID != other.ID) {
-            return false;
-        }
-        if (this.coins != other.coins) {
-            return false;
-        }
-        if (this.maxdims != other.maxdims) {
             return false;
         }
         return true;
     }
-
-    
 }
