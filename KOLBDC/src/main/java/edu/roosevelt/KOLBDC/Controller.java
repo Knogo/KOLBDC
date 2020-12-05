@@ -39,7 +39,29 @@ public class Controller {
     CreatorRepository creDB; //For Creators
     
     @Autowired
+    UsersRepository usersDB;
+    
+    @Autowired
     DungeonRepository dunDB; //For Dungeons
+    
+    @GetMapping({"/users/","/users/{id}"})
+    public ResponseEntity<List<Users>> getUsers(@PathVariable(value = "id", required = false) final Integer id) {
+        if (id != null) {
+            if (usersDB.existsById(id)) {
+                Users u = usersDB.findByID(id);
+                return new ResponseEntity(u, HttpStatus.OK);
+            } else {
+                return new ResponseEntity("Not found", HttpStatus.NOT_FOUND);
+            }
+        } else {
+            List<Users> result = (List<Users>)usersDB.findAll();
+            if (result == null || result.isEmpty()) {
+                return new ResponseEntity(result, HttpStatus.NO_CONTENT);
+            } else {
+                return new ResponseEntity(result, HttpStatus.OK);
+            }
+        }
+    }
     
     @GetMapping({"/diver/","/diver/{id}"})
     public ResponseEntity<List<Diver>> getDivers(@PathVariable(value = "id", required = false) final Integer id) {
@@ -95,6 +117,40 @@ public class Controller {
             } else {
                 return new ResponseEntity(result, HttpStatus.OK);
             }
+        }
+    }
+    
+    @PostMapping(value = {"/users/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Users> createUsers(@RequestBody @Valid final Users u) {
+        if (usersDB.existsById(u.getID()) || usersDB.existsByName(u.getName())) {
+            return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
+        } else {
+            usersDB.save(u);
+            return new ResponseEntity(u, HttpStatus.OK);
+        }
+    }
+    
+    @PutMapping(value = {"/users/", "/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Users> updateUsers(@RequestBody @Valid final Users u) {
+        if (usersDB.existsByName(u.getName())) {
+            return new ResponseEntity("Name in use already", HttpStatus.OK);
+        } else if (usersDB.existsById(u.getID())) {
+            usersDB.save(u);
+            return new ResponseEntity(u, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @DeleteMapping({"/users/{id}", "/{id}"})
+    public ResponseEntity<Users> deleteUsers(@PathVariable("id") final int ID) {
+        Users u = new Users(); u.setID(ID);
+        if (usersDB.existsById(u.getID())) {
+            u = usersDB.findByID(ID);
+            usersDB.deleteById(ID);
+            return new ResponseEntity(u, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
         }
     }
     

@@ -6,9 +6,14 @@
 package edu.roosevelt.KOLBDC;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  *
@@ -18,6 +23,8 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 public class Users implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = true)
     private int ID;
     private String name;
     private String password;
