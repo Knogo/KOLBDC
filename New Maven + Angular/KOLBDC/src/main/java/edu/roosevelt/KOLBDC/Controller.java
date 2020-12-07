@@ -47,8 +47,9 @@ public class Controller {
     DungeonRepository dunDB; //For Dungeons
 
     @GetMapping({"/user/logout/"})
-    public ResponseEntity<String> invalidate(HttpSession session) {
-        session.invalidate();
+    public ResponseEntity<String> invalidate(HttpServletRequest req) {
+        req.getSession().invalidate();
+        logger.info("Logged out");
         return new ResponseEntity("Logged out", HttpStatus.OK);
     }
 
@@ -76,7 +77,7 @@ public class Controller {
                 return new ResponseEntity(user, HttpStatus.NOT_FOUND);
             }
         } else {
-            return new ResponseEntity(user, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity(user, HttpStatus.NOT_FOUND);
         }
     }
 
