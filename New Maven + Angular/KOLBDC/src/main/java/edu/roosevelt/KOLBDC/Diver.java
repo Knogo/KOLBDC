@@ -9,6 +9,10 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -19,10 +23,20 @@ import javax.persistence.Table;
 public class Diver implements Serializable  {
     @Id
     private int ID;
-    private int coins;
-    private int vision;
-    private int keys;
-    private String clears;
+    
+    @Min(value = 0)
+    private int coins = 0;
+    
+    @Min(value = 0)
+    @Max(value = 4)
+    private int vision = 0;
+    
+    @Min(value = 0)
+    @Max(value = 10)
+    private int keys = 0;
+    
+    @Size(max = 2000)
+    private String clears = "";
 
     public int getID() {
         return ID;

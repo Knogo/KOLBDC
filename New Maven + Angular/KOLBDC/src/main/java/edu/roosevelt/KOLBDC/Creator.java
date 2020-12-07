@@ -9,6 +9,12 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  *
@@ -19,9 +25,16 @@ import javax.persistence.Table;
 public class Creator implements Serializable {
     @Id
     private int ID;
-    private int coins;
-    private int maxdims;
-    private String clears;
+    
+    @Min(value = 0)
+    private int coins = 0;
+
+    @Min(value = 5)
+    @Max(value = 25)
+    private int maxdims = 5;
+
+    @Size(max = 2000)
+    private String clears = "";
 
     public int getID() {
         return ID;

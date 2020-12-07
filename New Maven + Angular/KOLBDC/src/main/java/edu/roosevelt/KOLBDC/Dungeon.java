@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -22,13 +24,23 @@ import javax.persistence.Table;
 public class Dungeon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = true)
+    @Column(name = "did", unique = true, nullable = true)
     private int DID;
-    private String name;
+    
+    @Size(max = 50)
+    private String name; //Could have identical names, but not a real issue
+    
+    @Size(max = 30)
     private String cname; //creator name (they can set as they like -- even if deleted, dungeon should persist)
+    
+    @Size(max = 2000)
     private String layout;
-    private String highscore; //The name of the high-scorer (even if user is deleted, name should persist)
-    private int minmoves;
+    
+    @Size(max = 30)
+    private String highscore = ""; //The name of the high-scorer (even if user is deleted, name should persist)
+    
+    @Min(value = 1)
+    private int minmoves = 99999;
 
     public int getDID() {
         return DID;
