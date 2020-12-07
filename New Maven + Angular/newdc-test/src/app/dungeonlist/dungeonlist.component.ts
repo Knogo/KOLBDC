@@ -23,13 +23,4 @@ export class DungeonlistComponent implements OnInit {
       this.dungeon = data
     });
   }
-
-  logout() {
-    this.userService.logout().subscribe(error => {
-      console.log(error);
-      this.router.navigateByUrl('/login');
-    }, compelte => {
-      this.router.navigateByUrl('/login');
-    });
-  }
 }

@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './user.service';
 import { AddCredentialsInterceptor } from './add-credentials.interceptor';
 import { FormsModule } from '@angular/forms';
+import { AccountbarComponent } from './accountbar/accountbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     DungeonlistComponent,
     DungeonrunnerComponent,
     HelpmenuComponent,
-    LoginComponent
+    LoginComponent,
+    AccountbarComponent
   ],
   imports: [
     BrowserModule,

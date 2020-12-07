@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.user = data;
         sessionStorage.setItem("name", this.user.name);
+        sessionStorage.setItem("role", this.user.role);
         sessionStorage.setItem("id", String(this.user.id));
         this.router.navigateByUrl('/dungeonlist');
       }, error => {
