@@ -1,0 +1,28 @@
+<body>
+    <h1>KOLB-DC</h1>
+    <h2>A dungeon crawler web service, with Angular + Spring.</h2>
+
+    <img src = "../../assets/svg/map.svg"> <p></p>
+
+    <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+        <span [ngClass]="{'invalidLabel':errorReturn}" *ngIf="errorReturn">Incorrect username/password.</span>
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (name.invalid && (name.touched || name.dirty))}"> Username:
+            <span *ngIf="name.invalid && (name.touched || name.dirty)">(Userame cannot be blank) </span>
+        </span>
+        <input type="text" [ngClass]="{'invalidTB': (name.invalid && (name.touched || name.dirty))}" maxlength="30"
+            [(ngModel)]="user.name" required name="name" #name="ngModel">
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (pass.invalid && (pass.touched || pass.dirty))}"> Password:
+            <span *ngIf="pass.invalid && (pass.touched || pass.dirty)">(Password cannot be blank) </span>
+        </span>
+        <input type="text" [ngClass]="{'invalidTB': (pass.invalid && (pass.touched || pass.dirty))}" maxlength="30"
+            [(ngModel)]="user.password" required name="pass" #pass="ngModel">
+        <p></p>
+
+        <input type="submit" value="Submit" [disabled]="!myform.form.valid">
+        <input type="reset" value="Reset Form">
+    </form>
+</body>

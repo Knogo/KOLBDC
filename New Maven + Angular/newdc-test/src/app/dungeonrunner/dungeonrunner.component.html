@@ -1,0 +1,33 @@
+<body id="overall">
+    <img #cat style = "display: none" src = "../../assets/svg/cat.svg">
+    <img #door style = "display: none" src = "../../assets/svg/door.svg">
+    <img #fish style = "display: none" src = "../../assets/svg/fish.svg">
+    <img #key style = "display: none" src = "../../assets/svg/key.svg">
+    <img #lock style = "display: none" src = "../../assets/svg/lock.svg">
+    <div id="canvasContainer" (window:keydown)="movePlayer($event)"
+        style="position: absolute; left: 10px; top: 15px; overflow: hidden;">
+        <canvas id="player" style="position: absolute; z-index: 4;"></canvas>
+        <canvas id="fog" style="position: absolute; z-index: 2;"></canvas>
+        <canvas id="darkness" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>
+        <canvas id="map" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+        <canvas id="background" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+    </div>
+
+    <div id="menu">
+        <button id="helpMenu" style="margin-top: 10%; background-color: rgb(255, 145, 0);" (click)="openHelpMenu()">How
+            To Play</button>
+        <p></p>
+        <button class="arrows" style="margin-left: 35%; margin-top: 100%;" (click)="move('up')">↑</button>
+        <div style="margin-left: 9%;">
+            <button class="arrows" (click)="move('left')">←</button>
+            <button class="arrows" (click)="move('down')">↓</button>
+            <button class="arrows" (click)="move('right')">→</button>
+            <p></p>
+        </div>
+
+        <button id="leave" style="margin-top: 10%;" routerLink="/dungeonlist">Leave Dungeon</button>
+        <p></p>
+        <button id="reset" style="background-color: red;" (click)="resetDungeon()">Reset Dungeon</button>
+        <p></p>
+    </div>
+</body>

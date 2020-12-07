@@ -1,0 +1,24 @@
+<body>
+    <h1>List of Dungeons</h1>
+    <table>
+       <tr>
+          <th>DID</th>
+          <th>Name</th>
+          <th>Creator ID</th>
+          <th>Highscore</th>
+          <th>Minimum Moves</th>
+       </tr>
+       <tr *ngFor="let each of dungeon">
+          <td>{{each.did}}</td>
+          <td>{{each.name}}</td>
+          <td>{{each.id}}</td>
+          <td>{{each.highscore}}</td>
+          <td>{{each.minmoves}}</td>
+          <td><a [routerLink]="['/dungeon', each.did]">Enter Dungeon</a></td>
+       </tr>
+    </table>
+
+    <footer>
+      <button (click) = "logout()">Log Out</button>
+    </footer>
+ </body>
