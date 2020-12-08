@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AhomeComponent } from './adminpages/ahome/ahome.component';
 import { ChomeComponent } from './creatorpages/chome/chome.component';
 import { DhomeComponent } from './diverpages/dhome/dhome.component';
+import { AdminGuard } from './userlog/admin.guard';
+import { CreatorGuard } from './userlog/creator.guard';
+import { DiverGuard } from './userlog/diver.guard';
 import { LoginComponent } from './userlog/login/login.component';
 
 const routes: Routes = [
@@ -17,15 +20,15 @@ const routes: Routes = [
   },
   {
     path: 'diver',
-    component: DhomeComponent
+    component: DhomeComponent, canActivate:[DiverGuard]
   },
   {
     path: 'creator',
-    component: ChomeComponent
+    component: ChomeComponent, canActivate:[CreatorGuard]
   },
   {
     path: 'admin',
-    component: AhomeComponent
+    component: AhomeComponent, canActivate:[AdminGuard]
   },
   {
     path: '**',

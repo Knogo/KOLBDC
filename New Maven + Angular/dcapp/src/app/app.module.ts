@@ -36,6 +36,9 @@ import { FormsModule } from '@angular/forms';
 import { DungeonService } from './classes/dungeon.service';
 import { UserService } from './classes/user.service';
 import { AddCredentialsInterceptor } from './general/add-credentials.interceptor';
+import { DiverGuard } from './userlog/diver.guard';
+import { CreatorGuard } from './userlog/creator.guard';
+import { AdminGuard } from './userlog/admin.guard';
 
 @NgModule({
   declarations: [
@@ -75,7 +78,7 @@ import { AddCredentialsInterceptor } from './general/add-credentials.interceptor
     MatDialogModule,
     FormsModule
   ],
-  providers: [DungeonService, UserService, [{provide: HTTP_INTERCEPTORS, useClass: AddCredentialsInterceptor, multi: true}]],
+  providers: [DungeonService, UserService, DiverGuard, CreatorGuard, AdminGuard, [{provide: HTTP_INTERCEPTORS, useClass: AddCredentialsInterceptor, multi: true}]],
   bootstrap: [AppComponent],
   entryComponents: [HelpmenuComponent]
 })
