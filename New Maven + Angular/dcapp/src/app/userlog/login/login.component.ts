@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
         this.user = data;
 
         localStorage.setItem("name", this.user.name);
+        //Is it safe to expose this? You'd only get here if you already knew your password
+        localStorage.setItem("password", this.user.password);
         localStorage.setItem("role", this.user.role);
         localStorage.setItem("id", String(this.user.id));
 

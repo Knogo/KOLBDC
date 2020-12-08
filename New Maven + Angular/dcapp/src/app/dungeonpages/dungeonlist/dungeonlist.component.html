@@ -1,1 +1,20 @@
-<p>dungeonlist works!</p>
+<body>
+    <h1>List of Dungeons</h1>
+    <table>
+       <tr>
+          <th><a (click)="sortby('did')">DID</a></th>
+          <th><a (click)="sortby('name')">Name</a></th>
+          <th><a (click)="sortby('cname')">Creator Name</a></th>
+          <th><a (click)="sortby('highscore')">Highscore</a></th>
+          <th><a (click)="sortby('minmoves')">Minimum Moves</a></th> 
+       </tr>
+       <tr *ngFor="let each of dungeon">
+          <td>{{each.did}}</td>
+          <td>{{each.name}}</td>
+          <td>{{each.cname}}</td>
+          <td>{{each.highscore}}</td>
+          <td>{{each.minmoves}}</td>
+          <td><a [routerLink]="['/dungeon', each.did]">Enter Dungeon</a></td>
+       </tr>
+    </table>
+ </body>

@@ -256,9 +256,15 @@ public class Controller {
         Users logU = (Users) req.getSession().getAttribute("user");
 
         if (logU != null) { //Only logged in users should be able to edit their account
-            if (uDB.existsByName(u.getName())) {
-                return new ResponseEntity("Name in use already", HttpStatus.OK);
-            } else if (uDB.existsById(u.getID())) {
+            if (uDB.existsById(u.getID())) {
+                Users old = uDB.findByID(u.getID());
+                if (!u.getName().equals(old.getName())) { //new name
+                    if (uDB.existsByName(u.getName())){ //new name conflict
+                        return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
+                    }                    
+                }
+                //Here means new/old name has no conflicts
+                
                 //We need to strip the role from non-admin users
                 Users temp = new Users();
                 temp.setID(u.getID());

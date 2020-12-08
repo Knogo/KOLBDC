@@ -10,9 +10,7 @@ import { UserService } from 'src/app/classes/user.service';
   styleUrls: ['./newuser.component.css']
 })
 export class NewuserComponent implements OnInit {
-  errorReturn = false;
   user: User = new User();
-  cpass: string;
   nameAlreadyExists = false;
 
   constructor(private titleService: Title, private userService: UserService, private router: Router) { }
@@ -25,6 +23,8 @@ export class NewuserComponent implements OnInit {
     this.userService.newUser(this.user).subscribe(
       data => {
         localStorage.setItem("name", data.name);
+        //See in login for safety concerns
+        localStorage.setItem("password", this.user.password);
         localStorage.setItem("role", data.role);
         localStorage.setItem("id", String(data.id));
 

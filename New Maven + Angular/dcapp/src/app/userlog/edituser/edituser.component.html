@@ -1,0 +1,27 @@
+<body>
+    <h1>Edit User</h1>
+    <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+        <span [ngClass]="{'invalidLabel': (name.invalid && (name.touched || name.dirty))}"> Username: </span>
+        <input type="text" [ngClass]="{'invalidTB': (name.invalid && (name.touched || name.dirty))}" maxlength="30"
+            [(ngModel)]="user.name" required name="name" #name="ngModel">
+        <p></p>
+        <span *ngIf="nameAlreadyExists && !name.pristine">(Username in use by someone else!) </span>
+        <span [ngClass]="{'invalidLabel': (name.invalid && (name.touched || name.dirty))}"
+            *ngIf="name.invalid && (name.touched || name.dirty)">(Userame cannot be blank!) </span>
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (pass.invalid && (pass.touched || pass.dirty))}"> Password:
+        </span>
+        <input type="text" [ngClass]="{'invalidTB': (pass.invalid && (pass.touched || pass.dirty))}" maxlength="30"
+            [(ngModel)]="user.password" required name="pass" #pass="ngModel">
+        <p></p>
+        <span [ngClass]="{'invalidLabel': (pass.invalid && (pass.touched || pass.dirty))}"
+            *ngIf="pass.invalid && (pass.touched || pass.dirty)">(Password cannot be blank!) </span>
+        <p></p>
+
+        <input type="submit" value="Submit" [disabled]="!myform.form.valid">
+        <input type="reset" value="Reset Form">
+        <p></p>
+        <input type="button" value="Go Back" routerLink="{{this.url}}">
+    </form>
+</body>

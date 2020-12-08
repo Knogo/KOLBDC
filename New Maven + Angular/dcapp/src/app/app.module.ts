@@ -40,6 +40,7 @@ import { DiverGuard } from './userlog/diver.guard';
 import { CreatorGuard } from './userlog/creator.guard';
 import { AdminGuard } from './userlog/admin.guard';
 import { NewuserComponent } from './userlog/newuser/newuser.component';
+import { EdituserComponent } from './userlog/edituser/edituser.component';
 
 @NgModule({
   declarations: [
@@ -70,11 +71,12 @@ import { NewuserComponent } from './userlog/newuser/newuser.component';
     EditDungeonComponent,
     DungeonListComponent,
     AcrawlerComponent,
-    NewuserComponent
+    NewuserComponent,
+    EdituserComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
