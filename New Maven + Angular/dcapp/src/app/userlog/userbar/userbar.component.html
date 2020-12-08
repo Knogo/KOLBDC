@@ -1,1 +1,6 @@
-<p>userbar works!</p>
+<footer *ngIf="!router.url.includes('login')">
+    <span style="margin-left: 15px;">{{this.username}} // </span>
+    <a routerLink = "{{this.url}}">{{this.role}}</a>
+    <button (click) = "logout()">Log Out</button>
+    <button>Edit Account</button>
+</footer>

@@ -21,7 +21,7 @@ export class AccountbarComponent implements OnInit {
     this.userService.logout().subscribe(error => {
       console.log(error);
       this.router.navigateByUrl('/login');
-    }, compelte => {
+    }, complete => {
       this.router.navigateByUrl('/login');
     });
   }

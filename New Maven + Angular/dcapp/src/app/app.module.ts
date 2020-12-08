@@ -30,6 +30,12 @@ import { AddDungeonComponent } from './adminpages/dunAdmin/add-dungeon/add-dunge
 import { EditDungeonComponent } from './adminpages/dunAdmin/edit-dungeon/edit-dungeon.component';
 import { DungeonListComponent } from './adminpages/dunAdmin/dungeon-list/dungeon-list.component';
 import { AcrawlerComponent } from './adminpages/dunAdmin/acrawler/acrawler.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { DungeonService } from './classes/dungeon.service';
+import { UserService } from './classes/user.service';
+import { AddCredentialsInterceptor } from './general/add-credentials.interceptor';
 
 @NgModule({
   declarations: [
@@ -64,9 +70,13 @@ import { AcrawlerComponent } from './adminpages/dunAdmin/acrawler/acrawler.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatDialogModule,
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DungeonService, UserService, [{provide: HTTP_INTERCEPTORS, useClass: AddCredentialsInterceptor, multi: true}]],
+  bootstrap: [AppComponent],
+  entryComponents: [HelpmenuComponent]
 })
 export class AppModule { }

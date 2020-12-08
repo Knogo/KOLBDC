@@ -1,0 +1,53 @@
+div.divertext {
+    display: inline-block;
+    text-align: right;
+    font-size: 55px;
+    transform: skew(20deg);
+    margin-top: 2px;
+}
+
+h1 {
+    color: white;
+    text-align: left;
+    padding-left: 100px;
+    border-right-style: groove;
+    border-right-width: 10px;
+    background-color: rgb(24, 104, 136);
+    border-right-color: rgb(89, 236, 255);
+    margin-left: -50px;
+    width: 25%;
+    height: 75px;
+    transform: skew(-20deg);
+}
+
+div.cointext {
+    display: inline-block;
+    font-size: 35px;
+    transform: skew(20deg);
+    margin-top: 2px;
+}
+
+h2 {
+    color: black;
+    text-align: right;
+    padding-right: 20px;
+    background-color: rgb(255, 241, 45);
+    border-right-style: groove;
+    border-right-width: 10px;
+    border-right-color: rgb(115, 141, 0);
+    margin-left: -50px;
+    width: 16%;
+    height: 50px;
+    transform: skew(-20deg);
+}
+
+div.topbargroup {
+    overflow: hidden;
+}
+
+button {
+    margin-top: 10px;
+    width: 300px;
+    font-size: 30px;
+    padding-top: 10px;
+}

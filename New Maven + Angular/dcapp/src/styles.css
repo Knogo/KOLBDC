@@ -1,4 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+    font-family: silverf;
+    src: url(./assets/Silver.ttf) format("truetype");
+}
+
+html, body { 
+    height: 100%; 
+    background-color: black;
+    color: white;
+    font-family: silverf;
+    font-size-adjust: 0.5; 
+}
+body { margin: 0; }
+
+button {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px 15px 1px 15px;
+    text-align: center;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+a:link, a:visited, a:active {
+    color: rgb(64, 255, 236);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: rgb(36, 168, 155);
+    text-decoration: underline;
+}
