@@ -24,7 +24,6 @@ export class NewuserComponent implements OnInit {
 
   onSubmit() {
     this.user.role = "";
-    this.user.id = 0;
     this.userService.addUser(this.user).subscribe(
       data => {
         console.log(data);
