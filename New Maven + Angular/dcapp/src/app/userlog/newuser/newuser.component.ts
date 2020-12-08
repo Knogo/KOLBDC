@@ -13,7 +13,6 @@ export class NewuserComponent implements OnInit {
   errorReturn = false;
   user: User = new User();
   cpass: string;
-  passMatch = false;
   nameAlreadyExists = false;
 
   constructor(private titleService: Title, private userService: UserService, private router: Router) { }
@@ -23,12 +22,13 @@ export class NewuserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.user.role = "";
-    this.userService.addUser(this.user).subscribe(
+    this.userService.newUser(this.user).subscribe(
       data => {
-        console.log(data);
-        console.log(this.user.role);
-        this.router.navigateByUrl('/' + this.user.role);
+        localStorage.setItem("name", data.name);
+        localStorage.setItem("role", data.role);
+        localStorage.setItem("id", String(data.id));
+
+        this.router.navigateByUrl('/diver');
       }, error => {
         if (error.status == '409')
         {

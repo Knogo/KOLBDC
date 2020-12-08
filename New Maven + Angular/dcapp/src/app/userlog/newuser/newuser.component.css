@@ -1,0 +1,31 @@
+.invalidLabel {
+    color: lightcoral;
+}
+
+.invalidTB {
+    color: rgb(61, 40, 40);
+    font-weight: bold;
+}
+
+input {
+    height: 25px;
+}
+
+form {
+    display: inline-block;
+    font-size-adjust: .8;
+}
+
+body {
+    text-align: center;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 10%;
+    transform: scale(2, 3);
+}
+
+h2 {
+    color: #DBDBDB;
+}

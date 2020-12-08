@@ -38,7 +38,6 @@ public class Users implements Serializable {
     @Size(max = 30)
     private String password; 
     
-    @NotNull
     @Size(max = 30)
     private String role = "diver"; //Default to diver role
 

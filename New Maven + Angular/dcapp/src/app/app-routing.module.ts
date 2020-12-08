@@ -16,10 +16,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
     path: 'newUser',
     component: NewuserComponent
   },
@@ -34,6 +30,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AhomeComponent, canActivate:[AdminGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',

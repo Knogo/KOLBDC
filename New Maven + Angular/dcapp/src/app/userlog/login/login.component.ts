@@ -26,6 +26,19 @@ export class LoginComponent implements OnInit {
     this.user.password = "cat";
   }
 
+  toggleSH() {
+    var p = document.getElementById("pass");
+    var b = document.getElementById("showhide");
+
+    if (p.getAttribute("type") == "password"){
+      p.setAttribute("type", "text");
+      b.setAttribute("value", "Show");
+    } else {
+      p.setAttribute("type", "password");
+      b.setAttribute("value", "Hide");
+    }
+  }
+
   onSubmit() {
     this.userService.login(this.user).subscribe(
       data => {

@@ -19,7 +19,7 @@ export class UserService {
     return this.http.get('http://localhost:8080/user/logout/');
   }
 
-  public addUser(user: User): Observable<any> {
-    return this.http.post<User>('http://localhost:8080/users/', user);
+  public newUser(user: User): Observable<any> {
+    return this.http.post<User>('http://localhost:8080/newusers/', user);
   }
 }

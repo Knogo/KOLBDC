@@ -1,4 +1,4 @@
-<footer *ngIf="!router.url.includes('login')">
+<footer *ngIf="!router.url.includes('login') && !router.url.includes('newUser')">
     <span style="margin-left: 15px;">{{this.username}} // </span>
     <a routerLink = "{{this.url}}">{{this.role}}</a>
     <button (click) = "logout()">Log Out</button>

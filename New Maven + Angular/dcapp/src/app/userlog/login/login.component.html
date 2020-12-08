@@ -2,7 +2,8 @@
     <h1>KOLB-DC</h1>
     <h2>A dungeon crawler web service, with Angular + Spring.</h2>
 
-    <img src = "../../../assets/svg/map.svg"> <p></p>
+    <img src="../../../assets/svg/map.svg">
+    <p></p>
 
     <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
         <span [ngClass]="{'invalidLabel':errorReturn}" *ngIf="errorReturn">Incorrect username/password.</span>
@@ -10,15 +11,20 @@
 
         <span [ngClass]="{'invalidLabel': (name.invalid && (name.touched || name.dirty))}"> Username: </span>
         <input type="text" [ngClass]="{'invalidTB': (name.invalid && (name.touched || name.dirty))}" maxlength="30"
-            [(ngModel)]="user.name" required name="name" #name="ngModel"> <p></p>
-        <span [ngClass]="{'invalidLabel': (name.invalid && (name.touched || name.dirty))}" *ngIf="name.invalid && (name.touched || name.dirty)">(Userame cannot be blank!) </span> <p></p>
+            [(ngModel)]="user.name" required name="name" #name="ngModel">
+        <p></p>
+        <span [ngClass]="{'invalidLabel': (name.invalid && (name.touched || name.dirty))}"
+            *ngIf="name.invalid && (name.touched || name.dirty)">(Userame cannot be blank!) </span>
+        <p></p>
 
         <span [ngClass]="{'invalidLabel': (pass.invalid && (pass.touched || pass.dirty))}"> Password:
         </span>
-        <input type="text" [ngClass]="{'invalidTB': (pass.invalid && (pass.touched || pass.dirty))}" maxlength="30"
-            [(ngModel)]="user.password" required name="pass" #pass="ngModel">
+        <input type="password" id="pass" [ngClass]="{'invalidTB': (pass.invalid && (pass.touched || pass.dirty))}"
+            maxlength="30" [(ngModel)]="user.password" required name="pass" #pass="ngModel">
+        <input type="button" id="showhide" style="position: relative;" value="Show" (click)="toggleSH()">
         <p></p>
-        <span [ngClass]="{'invalidLabel': (pass.invalid && (pass.touched || pass.dirty))}" *ngIf="pass.invalid && (pass.touched || pass.dirty)">(Password cannot be blank!) </span>
+        <span [ngClass]="{'invalidLabel': (pass.invalid && (pass.touched || pass.dirty))}"
+            *ngIf="pass.invalid && (pass.touched || pass.dirty)">(Password cannot be blank!) </span>
         <p></p>
 
         <input type="button" value="New user?" routerLink="/newUser">
