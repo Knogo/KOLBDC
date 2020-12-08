@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-helpmenu',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpmenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<HelpmenuComponent>) { }
 
   ngOnInit(): void {
   }
 
+  close() {
+    this.dialogRef.close();
+  }
 }

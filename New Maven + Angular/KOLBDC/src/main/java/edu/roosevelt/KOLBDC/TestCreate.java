@@ -46,7 +46,6 @@ public class TestCreate {
             sql = sql + "COINS INTEGER,";
             sql = sql + "VISION INTEGER,";
             sql = sql + "KEYS INTEGER,";
-            sql = sql + "CLEARS VARCHAR(2000),";
             sql = sql + "FOREIGN KEY (ID) REFERENCES USERS(ID) ON DELETE CASCADE)";
 
             try {
@@ -60,7 +59,7 @@ public class TestCreate {
         
         try {
                 conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'bob', 'cat', 'diver')");
-                conn.createStatement().execute("INSERT INTO DIVER VALUES (10000, 5, 4, 5, 'wind dungeon')");
+                conn.createStatement().execute("INSERT INTO DIVER VALUES (10000, 5, 4, 5)");
         } catch (SQLException sQLException) {   }
 
         succeeds = false;
@@ -70,7 +69,6 @@ public class TestCreate {
             sql = sql + "ID INTEGER PRIMARY KEY,";
             sql = sql + "COINS INTEGER,";
             sql = sql + "MAXDIMS INTEGER,";
-            sql = sql + "CLEARS VARCHAR(2000),";
             sql = sql + "FOREIGN KEY (ID) REFERENCES USERS(ID) ON DELETE CASCADE)";
 
             try {
@@ -84,11 +82,15 @@ public class TestCreate {
         
         try {
             conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'lux', 'ezreal', 'creator')");
-            conn.createStatement().execute("INSERT INTO CREATOR VALUES (10001, 20, 25, 'wind dungeon')");
+            conn.createStatement().execute("INSERT INTO CREATOR VALUES (10001, 20, 25)");
         } catch (SQLException sQLException) {   }
         
         try {
             conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'LvL', 'Upppa', 'admin')");
+        } catch (SQLException sQLException) {   }
+        
+        try {
+            conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'ken', 'ken', 'admin')");
         } catch (SQLException sQLException) {   }
         
         succeeds = false;

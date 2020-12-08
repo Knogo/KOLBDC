@@ -33,9 +33,6 @@ public class Creator implements Serializable {
     @Max(value = 25)
     private int maxdims = 5;
 
-    @Size(max = 2000)
-    private String clears = "";
-
     public int getID() {
         return ID;
     }
@@ -58,14 +55,6 @@ public class Creator implements Serializable {
 
     public void setMaxdims(int maxdims) {
         this.maxdims = maxdims;
-    }
-
-    public String getClears() {
-        return clears;
-    }
-
-    public void setClears(String clears) {
-        this.clears = clears;
     }
 
     @Override

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Dungeon } from 'src/app/classes/dungeon';
 import { DungeonService } from 'src/app/classes/dungeon.service';
 
@@ -12,7 +12,7 @@ import { DungeonService } from 'src/app/classes/dungeon.service';
 export class DungeonlistComponent implements OnInit {
   dungeon: Dungeon[];
 
-  constructor(private dungeonService: DungeonService, private titleService: Title, private router: Router) { }
+  constructor(private dungeonService: DungeonService, private titleService: Title, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.titleService.setTitle("List of Dungeons");

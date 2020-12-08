@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
@@ -28,6 +28,7 @@ export class EdituserComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.user);
     this.userService.editUser(this.user).subscribe(
       data => {
         //Server does cleaning if required (particularly for role);

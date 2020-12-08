@@ -170,6 +170,7 @@ public class Controller {
         if (logU != null) { //Only need to check for logged in
             if (did != null) {
                 if (dunDB.existsById(did)) {
+                    logger.info("Queried for dungeon");
                     Dungeon d = dunDB.findByDID(did);
                     return new ResponseEntity(d, HttpStatus.OK);
                 } else {
@@ -271,10 +272,10 @@ public class Controller {
                 temp.setName(u.getName());
                 temp.setPassword(u.getPassword());
 
-                if (u.getRole().equals("creator")) { //Creator stays creator
+                if (logU.getRole().equals("admin")) { //Admin can change role
                     temp.setRole(u.getRole());
-                } else if (logU.getRole().equals("admin") && (u.getRole().equals("admin"))) { //Only admins can make others into admins
-                    temp.setRole(u.getRole());
+                } else {
+                    temp.setRole(logU.getRole()); //Stay the same role if not admin
                 }
                 //The else is already defaulted --
                 //If a creator tries to promote themselves to admin, they'll get demoted to diver instead

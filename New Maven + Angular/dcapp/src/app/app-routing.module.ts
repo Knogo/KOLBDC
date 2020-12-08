@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AhomeComponent } from './adminpages/ahome/ahome.component';
 import { ChomeComponent } from './creatorpages/chome/chome.component';
+import { DcrawlerComponent } from './diverpages/dcrawler/dcrawler.component';
 import { DhomeComponent } from './diverpages/dhome/dhome.component';
+import { DupgradesComponent } from './diverpages/dupgrades/dupgrades.component';
 import { DungeonlistComponent } from './dungeonpages/dungeonlist/dungeonlist.component';
 import { AdminGuard } from './userlog/admin.guard';
 import { CreatorGuard } from './userlog/creator.guard';
@@ -35,8 +37,16 @@ const routes: Routes = [
         component: DhomeComponent
       },
       {
+        path: 'upgrades',
+        component: DupgradesComponent
+      },
+      {
         path: 'dungeonlist',
         component: DungeonlistComponent
+      },
+      {
+        path: 'dungeon/:did',
+        component: DcrawlerComponent
       }]
   },
   {

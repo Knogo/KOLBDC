@@ -14,7 +14,8 @@
           <td>{{each.cname}}</td>
           <td>{{each.highscore}}</td>
           <td>{{each.minmoves}}</td>
-          <td><a [routerLink]="['/dungeon', each.did]">Enter Dungeon</a></td>
+          <td><a [routerLink]="['../dungeon', each.did]">Enter Dungeon</a></td>
        </tr>
+       <td><button [routerLink]="['..']">Back to home</button></td>
     </table>
  </body>

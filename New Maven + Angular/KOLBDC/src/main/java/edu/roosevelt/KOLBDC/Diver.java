@@ -34,9 +34,6 @@ public class Diver implements Serializable  {
     @Min(value = 0)
     @Max(value = 10)
     private int keys = 0;
-    
-    @Size(max = 2000)
-    private String clears = "";
 
     public int getID() {
         return ID;
@@ -68,14 +65,6 @@ public class Diver implements Serializable  {
 
     public void setKeys(int keys) {
         this.keys = keys;
-    }
-
-    public String getClears() {
-        return clears;
-    }
-
-    public void setClears(String clears) {
-        this.clears = clears;
     }
 
     @Override
