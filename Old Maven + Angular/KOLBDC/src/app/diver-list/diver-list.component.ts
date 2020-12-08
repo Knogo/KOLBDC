@@ -21,4 +21,5 @@ export class DiverListComponent implements OnInit {
     });
   }
 
+  
 }
