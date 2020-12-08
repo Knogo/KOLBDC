@@ -18,4 +18,8 @@ export class UserService {
     localStorage.clear();
     return this.http.get('http://localhost:8080/user/logout/');
   }
+
+  public addUser(user: User): Observable<any> {
+    return this.http.post<User>('http://localhost:8080/users/', user);
+  }
 }

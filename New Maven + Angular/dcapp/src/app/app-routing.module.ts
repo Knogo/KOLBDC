@@ -7,6 +7,7 @@ import { AdminGuard } from './userlog/admin.guard';
 import { CreatorGuard } from './userlog/creator.guard';
 import { DiverGuard } from './userlog/diver.guard';
 import { LoginComponent } from './userlog/login/login.component';
+import { NewuserComponent } from './userlog/newuser/newuser.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'newUser',
+    component: NewuserComponent
   },
   {
     path: 'diver',

@@ -204,8 +204,9 @@ public class Controller {
             if (logU.getRole().equals("admin") && (u.getRole().equals("creator") || u.getRole().equals("admin"))) { //Only admin can set role from start -- and you should only be able to set it to diver(default), creator, or admin
                 temp.setRole(u.getRole());
             }
+            logger.info(temp.getRole());
             uDB.save(temp);
-
+            logger.info(temp.getRole());    
             //Now generate matching subtable
             if (temp.getRole().equals("diver")) {
                 Diver d = new Diver();

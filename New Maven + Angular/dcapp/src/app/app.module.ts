@@ -39,6 +39,7 @@ import { AddCredentialsInterceptor } from './general/add-credentials.interceptor
 import { DiverGuard } from './userlog/diver.guard';
 import { CreatorGuard } from './userlog/creator.guard';
 import { AdminGuard } from './userlog/admin.guard';
+import { NewuserComponent } from './userlog/newuser/newuser.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AdminGuard } from './userlog/admin.guard';
     AddDungeonComponent,
     EditDungeonComponent,
     DungeonListComponent,
-    AcrawlerComponent
+    AcrawlerComponent,
+    NewuserComponent
   ],
   imports: [
     BrowserModule,
