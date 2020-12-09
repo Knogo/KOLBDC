@@ -27,12 +27,12 @@ export class DiverService {
     return this.http.post<Diver>(this.diverUrl, diver);
   }
 
-  //Divers/Admins
+  //Diver/Admin -- setting upgrades for divers
   public editDiver(diver: Diver) {
     return this.http.put<Diver>(this.diverUrl, diver);
   }
 
-  //Admins only
+  //Admin only
   public deleteDiver(id: bigint): Observable<any> {
     return this.http.delete<Diver>(this.diverUrl + id);
   }

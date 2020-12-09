@@ -9,13 +9,16 @@
           <th><a (click)="sortby('minmoves')">Minimum Moves</a></th> 
        </tr>
        <tr *ngFor="let each of dungeon">
-          <td>{{each.did}}</td>
-          <td>{{each.name}}</td>
-          <td>{{each.cname}}</td>
-          <td>{{each.highscore}}</td>
-          <td>{{each.minmoves}}</td>
-          <td><a [routerLink]="['./test', each.did]">Test Dungeon</a></td>
+          <td class="data">{{each.did}}</td>
+          <td class="data">{{each.name}}</td>
+          <td class="data">{{each.cname}}</td>
+          <td class="data">{{each.highscore}}</td>
+          <td class="data">{{each.minmoves}}</td>
+          <td class="links"><a [routerLink]="['./test', each.did]">Test Dungeon</a></td>
+          <td class="links"><a [routerLink]="['./edit', each.did]">Edit Dungeon</a></td>
+          <td class="links"><a (click)="deleteDungeon(each.did)">Delete Dungeon</a></td>
        </tr>
     </table> <p></p>
+    <button [routerLink]="['./create']">Create Dungeon</button><p></p>
     <button [routerLink]="['..']">Back to Home</button>
  </body>

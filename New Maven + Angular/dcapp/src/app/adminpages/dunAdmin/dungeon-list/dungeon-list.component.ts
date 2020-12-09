@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Dungeon } from 'src/app/classes/dungeon';
 import { DungeonService } from 'src/app/classes/dungeon.service';
 
@@ -12,12 +12,23 @@ import { DungeonService } from 'src/app/classes/dungeon.service';
 export class DungeonListComponent implements OnInit {
   dungeon: Dungeon[];
 
-  constructor(private dungeonService: DungeonService, private titleService: Title, private router: Router, private route: ActivatedRoute) { }
+  constructor(private dungeonService: DungeonService, private titleService: Title, private router: Router) { }
+
+  deleteDungeon(did: bigint) {
+    this.dungeonService.deleteDungeon(did).subscribe(
+      () => {
+        this.ngOnInit(); //Refreshes the page
+        this.router.navigateByUrl("/admin/dungeonlist");
+      },
+      error => {
+        console.log(error);
+      });
+  }
 
   ngOnInit(): void {
     this.titleService.setTitle("List of Dungeons");
     this.dungeonService.getAllDungeons().subscribe(data => {
-      this.dungeon = data
+      this.dungeon = data;
     });
   }
 
@@ -32,6 +43,6 @@ export class DungeonListComponent implements OnInit {
       this.dungeon.sort((a, b) => (a.highscore > b.highscore) ? 1 : ((b.highscore > a.highscore) ? -1 : 0));
     } else if (field == "minmoves") {
       this.dungeon.sort((a, b) => (a.minmoves > b.minmoves) ? 1 : ((b.minmoves > a.minmoves) ? -1 : 0));
-    } 
+    }
   }
 }

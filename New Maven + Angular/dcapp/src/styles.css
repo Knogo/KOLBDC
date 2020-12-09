@@ -27,7 +27,7 @@ button {
     border-radius: 5px;
 }
 
-a:link, a:visited, a:active {
+a, a:link, a:visited, a:active {
     color: rgb(64, 255, 236);
     text-decoration: underline;
 }

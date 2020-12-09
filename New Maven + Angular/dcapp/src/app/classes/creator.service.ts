@@ -27,12 +27,12 @@ export class CreatorService {
     return this.http.post<Creator>(this.creatorUrl, creator);
   }
 
-  //Creators/Admins
+  //Creator/Admin -- setting upgrades for creators
   public editCreator(creator: Creator) {
     return this.http.put<Creator>(this.creatorUrl, creator);
   }
 
-  //Admins only
+  //Admin only
   public deleteCreator(id: bigint): Observable<any> {
     return this.http.delete<Creator>(this.creatorUrl + id);
   }

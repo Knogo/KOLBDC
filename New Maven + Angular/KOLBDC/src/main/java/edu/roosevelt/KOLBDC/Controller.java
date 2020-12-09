@@ -170,7 +170,6 @@ public class Controller {
         if (logU != null) { //Only need to check for logged in
             if (did != null) {
                 if (dunDB.existsById(did)) {
-                    logger.info("Queried for dungeon");
                     Dungeon d = dunDB.findByDID(did);
                     return new ResponseEntity(d, HttpStatus.OK);
                 } else {
@@ -260,12 +259,12 @@ public class Controller {
             if (uDB.existsById(u.getID())) {
                 Users old = uDB.findByID(u.getID());
                 if (!u.getName().equals(old.getName())) { //new name
-                    if (uDB.existsByName(u.getName())){ //new name conflict
+                    if (uDB.existsByName(u.getName())) { //new name conflict
                         return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
-                    }                    
+                    }
                 }
                 //Here means new/old name has no conflicts
-                
+
                 //We need to strip the role from non-admin users
                 Users temp = new Users();
                 temp.setID(u.getID());
@@ -273,7 +272,11 @@ public class Controller {
                 temp.setPassword(u.getPassword());
 
                 if (logU.getRole().equals("admin")) { //Admin can change role
-                    temp.setRole(u.getRole());
+                    if (logU.getID() != u.getID()) { //Admin tries to demote himself... bad idea?
+                        temp.setRole(u.getRole());
+                    } else { 
+                        temp.setRole(logU.getRole());
+                    }
                 } else {
                     temp.setRole(logU.getRole()); //Stay the same role if not admin
                 }
@@ -329,7 +332,7 @@ public class Controller {
     ) {
         Users logU = (Users) req.getSession().getAttribute("user");
 
-        if (logU.getRole().equals("diver") || logU.getRole().equals("admin")) {
+        if (logU.getRole().equals("admin")) { //Handled by user creation anyways
             if (divDB.existsById(d.getID())) {
                 return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
             } else {
@@ -348,7 +351,7 @@ public class Controller {
     ) {
         Users logU = (Users) req.getSession().getAttribute("user");
 
-        if (logU != null) {
+        if (logU.getRole().equals("diver") || logU.getRole().equals("admin")) {
             if (divDB.existsById(d.getID())) {
                 divDB.save(d);
                 return new ResponseEntity(d, HttpStatus.OK);
@@ -451,8 +454,15 @@ public class Controller {
             if (dunDB.existsById(d.getDID())) {
                 return new ResponseEntity("Already exists", HttpStatus.CONFLICT);
             } else {
-                dunDB.save(d);
-                return new ResponseEntity(d, HttpStatus.OK);
+                //Need to strip the id since it's auto generated
+                //Need to strip highscore/minmoves since it's not set yet
+                Dungeon temp = new Dungeon();
+                temp.setName(d.getName());
+                temp.setCname(d.getCname());
+                temp.setLayout(d.getLayout());
+
+                dunDB.save(temp);
+                return new ResponseEntity(temp, HttpStatus.OK);
             }
         } else {
             return new ResponseEntity(null, HttpStatus.UNAUTHORIZED);
@@ -466,10 +476,25 @@ public class Controller {
     ) {
         Users logU = (Users) req.getSession().getAttribute("user");
 
-        if (logU.getRole().equals("admin")) { //Left this reserved to admins
+        if (logU != null) { //Could reserve it to admins, but everyone needs to be able to update the highscores         
             if (dunDB.existsById(d.getDID())) {
-                dunDB.save(d);
-                return new ResponseEntity(d, HttpStatus.OK);
+                Dungeon temp = dunDB.findByDID(d.getDID());
+
+                if (logU.getRole().equals("diver")) { //Divers can set highscores
+                    if (d.getMinmoves() < temp.getMinmoves()) { //If new minimum, make change
+                        temp.setHighscore(d.getHighscore());
+                        temp.setMinmoves(d.getMinmoves());
+                    }
+                    dunDB.save(temp);
+                    return new ResponseEntity(temp, HttpStatus.OK);
+                } else if (logU.getRole().equals("admin")) { //Admins can mutate any field
+                    logger.info("admin side");
+                    dunDB.save(d);
+                    return new ResponseEntity(d, HttpStatus.OK);
+                } else { //Creators should not be setting highscores
+                    logger.info("anyone");
+                    return new ResponseEntity(null, HttpStatus.UNAUTHORIZED);
+                }
             } else {
                 return new ResponseEntity("Doesn't exist", HttpStatus.NOT_FOUND);
             }

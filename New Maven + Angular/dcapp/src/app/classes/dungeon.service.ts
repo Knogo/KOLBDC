@@ -26,7 +26,7 @@ export class DungeonService {
     return this.http.post<Dungeon>(this.dungeonUrl, dungeon);
   }
 
-  //Admin only
+  //Diver/Admin -- setting highscores/minmoves for divers only
   public editDungeon(dungeon: Dungeon) {
     return this.http.put<Dungeon>(this.dungeonUrl, dungeon);
   }

@@ -1,1 +1,21 @@
-<p>user-list works!</p>
+<body>
+    <h1>List of Users</h1>
+    <table>
+       <tr>
+          <th><a (click)="sortby('id')">ID</a></th>
+          <th><a (click)="sortby('name')">Name</a></th>
+          <th><a (click)="sortby('role')">Role</a></th>
+          <th><a (click)="sortby('password')">Password</a></th>
+       </tr>
+       <tr *ngFor="let each of user">
+          <td class="data">{{each.id}}</td>
+          <td class="data">{{each.name}}</td>
+          <td class="data">{{each.role}}</td>
+          <td class="data">{{each.password}}</td>
+          <td class="links"><a [routerLink]="['./edit', each.id]">Edit User</a></td>
+          <td class="links"><a (click)="deleteUser(each.id)">Delete User</a></td>
+       </tr>
+    </table> <p></p>
+    <button [routerLink]="['./create']">Create User</button><p></p>
+    <button [routerLink]="['..']">Back to Home</button>
+ </body>

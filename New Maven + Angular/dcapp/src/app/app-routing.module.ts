@@ -109,7 +109,7 @@ const routes: Routes = [
             component: UserListComponent
           },
           {
-            path: 'create/:id',
+            path: 'create',
             component: AddUserComponent
           },
           {
@@ -127,7 +127,7 @@ const routes: Routes = [
             component: DiverListComponent
           },
           {
-            path: 'create/:id',
+            path: 'create',
             component: AddDiverComponent
           },
           {
@@ -145,7 +145,7 @@ const routes: Routes = [
             component: CreatorListComponent
           },
           {
-            path: 'create/:id',
+            path: 'create',
             component: AddCreatorComponent
           },
           {
@@ -167,7 +167,7 @@ const routes: Routes = [
             component: AcrawlerComponent
           },
           {
-            path: 'create/:did',
+            path: 'create',
             component: AddDungeonComponent
           },
           {

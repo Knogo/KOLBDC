@@ -12,7 +12,7 @@ table, th {
 
 table {
     text-align: left;
-    width: 100%;
+    width: 75%;
 }
 
 th {
@@ -24,8 +24,12 @@ tr {
     width: auto;
 }
 
-td {
+td.data {
     padding-left: 15px;
+}
+
+td.links {
+    text-align: center;
 }
 
 a {

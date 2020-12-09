@@ -1,1 +1,19 @@
-<p>creator-list works!</p>
+<body>
+    <h1>List of Creators</h1>
+    <table>
+       <tr>
+          <th><a (click)="sortby('id')">ID</a></th>
+          <th><a (click)="sortby('coins')">Coins</a></th>
+          <th><a (click)="sortby('maxdims')">Max Dims</a></th>
+       </tr>
+       <tr *ngFor="let each of creator">
+          <td class="data">{{each.id}}</td>
+          <td class="data">{{each.coins}}</td>
+          <td class="data">{{each.maxdims}}</td>
+          <td class="links"><a [routerLink]="['./edit', each.id]">Edit Creator</a></td>
+          <td class="links"><a (click)="deleteCreator(each.did)">Delete Creator</a></td>
+       </tr>
+    </table> <p></p>
+    <button [routerLink]="['./create']">Create Creator</button><p></p>
+    <button [routerLink]="['..']">Back to Home</button>
+ </body>
