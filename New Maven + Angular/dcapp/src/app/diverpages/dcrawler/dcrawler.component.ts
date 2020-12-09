@@ -67,7 +67,7 @@ export class DcrawlerComponent implements OnInit {
             },
             error => {
               if (error.status == '404') {
-                console.error("User doesn't exist.");
+                console.error("Dungeon doesn't exist.");
               } else {
                 console.error("Unknown Error: ");
                 console.error(error);

@@ -1,0 +1,39 @@
+body {
+    background-color: black;
+    font-family: silverf;
+}
+
+::ng-deep.mat-dialog-container {
+    padding: 0px !important;
+}
+
+div#menu {
+    width: 250px;
+    height: 675px;
+    background-color: #1c1c1c;
+    color: white;
+    position: absolute;
+    top: 15px;
+    left: 695px;
+}
+
+button {
+    position: relative;
+    margin-left: 10%;
+    width: 80%;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 12px 15px 3px 15px;
+    text-align: center;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button.arrows {
+    margin-left: 0px;
+    width: 30%;
+}

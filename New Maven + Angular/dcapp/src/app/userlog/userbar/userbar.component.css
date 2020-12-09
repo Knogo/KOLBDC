@@ -1,16 +1,19 @@
 footer {
     display: block;
-    background-color: black;
+    background-color: rgba(44, 44, 44, 0.459);
+    border-top: 5px solid rgba(128, 255, 206, 0.644);
+    height: 40px;
     color: white;
     position: fixed;
     width: 100%;
-    bottom: 0px;
-    font-size: 20px;
+    bottom: 5px;
+    font-size: 25px;
+    padding-top: 10px;
 }
   
 button {
     float: right;
     margin-right: 10px;
     margin-bottom: 5px;
-    font-size: 25px;
+    font-size: 30px;
 }

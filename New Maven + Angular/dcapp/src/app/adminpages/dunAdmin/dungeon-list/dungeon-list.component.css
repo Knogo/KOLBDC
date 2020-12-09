@@ -1,0 +1,33 @@
+button {
+    margin-top: 30px;
+    font-size: 35px;
+    width: 14%;
+}
+
+table, th {
+    border: 2px solid white;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+}
+
+th {
+    text-align: left;
+    padding-left: 15px;
+}
+
+tr {
+    width: auto;
+}
+
+td {
+    padding-left: 15px;
+}
+
+a {
+    cursor: pointer;
+}
