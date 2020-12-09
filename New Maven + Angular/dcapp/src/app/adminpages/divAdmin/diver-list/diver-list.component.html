@@ -1,21 +1,23 @@
 <body>
-    <h1>List of Divers</h1>
-    <table>
-       <tr>
-          <th><a (click)="sortby('id')">ID</a></th>
-          <th><a (click)="sortby('coins')">Coins</a></th>
-          <th><a (click)="sortby('vision')">Vision</a></th>
-          <th><a (click)="sortby('keys')">Keys</a></th> 
-       </tr>
-       <tr *ngFor="let each of diver">
-          <td class="data">{{each.id}}</td>
-          <td class="data">{{each.coins}}</td>
-          <td class="data">{{each.vision}}</td>
-          <td class="data">{{each.keys}}</td>
-          <td class="links"><a [routerLink]="['./edit', each.id]">Edit Diver</a></td>
-          <td class="links"><a (click)="deleteDiver(each.did)">Delete Diver</a></td>
-       </tr>
-    </table> <p></p>
-    <button [routerLink]="['./create']">Create Diver</button><p></p>
-    <button [routerLink]="['..']">Back to Home</button>
- </body>
+   <h1>List of Divers</h1>
+   <table>
+      <tr>
+         <th><a (click)="sortby('id')">ID</a></th>
+         <th><a (click)="sortby('coins')">Coins</a></th>
+         <th><a (click)="sortby('vision')">Vision</a></th>
+         <th><a (click)="sortby('keys')">Keys</a></th>
+      </tr>
+      <tr *ngFor="let each of diver">
+         <td class="data">{{each.id}}</td>
+         <td class="data">{{each.coins}}</td>
+         <td class="data">{{each.vision}}</td>
+         <td class="data">{{each.keys}}</td>
+         <td class="links"><a [routerLink]="['./edit', each.id]">Edit Diver</a></td>
+         <td class="links"><a (click)="deleteDiver(each.did)">Delete Diver</a></td>
+      </tr>
+   </table>
+   <p></p>
+   <button [routerLink]="['./create']">Create Diver</button>
+   <p></p>
+   <button [routerLink]="['..']">Back to Home</button>
+</body>
