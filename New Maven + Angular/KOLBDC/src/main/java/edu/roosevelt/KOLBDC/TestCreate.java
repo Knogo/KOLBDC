@@ -61,6 +61,11 @@ public class TestCreate {
                 conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'bob', 'cat', 'diver')");
                 conn.createStatement().execute("INSERT INTO DIVER VALUES (10000, 5, 4, 5)");
         } catch (SQLException sQLException) {   }
+        
+        try {
+                conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'diver', 'diver', 'diver')");
+                conn.createStatement().execute("INSERT INTO DIVER VALUES (10001, 0, 0, 0)");
+        } catch (SQLException sQLException) {   }
 
         succeeds = false;
 
@@ -82,7 +87,12 @@ public class TestCreate {
         
         try {
             conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'lux', 'ezreal', 'creator')");
-            conn.createStatement().execute("INSERT INTO CREATOR VALUES (10001, 20, 25)");
+            conn.createStatement().execute("INSERT INTO CREATOR VALUES (10002, 20, 25)");
+        } catch (SQLException sQLException) {   }
+        
+        try {
+            conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'creator', 'creator', 'creator')");
+            conn.createStatement().execute("INSERT INTO CREATOR VALUES (10003, 0, 5)");
         } catch (SQLException sQLException) {   }
         
         try {
@@ -91,6 +101,10 @@ public class TestCreate {
         
         try {
             conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'ken', 'ken', 'admin')");
+        } catch (SQLException sQLException) {   }
+        
+        try {
+            conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'admin', 'admin', 'admin')");
         } catch (SQLException sQLException) {   }
         
         succeeds = false;
@@ -114,10 +128,10 @@ public class TestCreate {
         }
         
         try {
-            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon1', 'lux', '5, 5, [1, 1, 1, 1, 1, 2, 4, 1, 0, 3, 1, 0, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Garen', 5)");
-            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon2', 'lux', '5, 5, [1, 1, 1, 1, 1, 2, 0, 1, 0, 3, 1, 0, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Morgana', 5)");
-            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon3', 'lux', '5, 5, [1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Graves', 5)");
-            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon5', 'lux', '20, 20, [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3]', 'Fizz', 5)");
+            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon1', 'lux', '5, 5, [1, 1, 1, 1, 1, 2, 4, 1, 0, 3, 1, 0, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Garen', 999)");
+            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon2', 'lux', '5, 5, [1, 1, 1, 1, 1, 2, 0, 1, 0, 3, 1, 0, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Morgana', 999)");
+            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon3', 'lux', '5, 5, [1, 1, 1, 1, 1, 2, 0, 0, 0, 3, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]', 'Graves', 999)");
+            conn.createStatement().execute("INSERT INTO DUNGEON VALUES (DEFAULT, 'Test dungeon5', 'lux', '20, 20, [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3]', 'Fizz', 999)");
         } catch (SQLException sQLException) {   }
     }
 }
