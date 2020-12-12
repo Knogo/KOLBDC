@@ -32,7 +32,7 @@ export class DungeonService {
   }
 
   //Admin only
-  public deleteDungeon(did: bigint): Observable<any> {
+  public deleteDungeon(did: number): Observable<any> {
     return this.http.delete<Dungeon>(this.dungeonUrl + did);
   }
 }

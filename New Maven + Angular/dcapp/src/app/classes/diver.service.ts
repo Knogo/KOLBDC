@@ -33,7 +33,7 @@ export class DiverService {
   }
 
   //Admin only
-  public deleteDiver(id: bigint): Observable<any> {
+  public deleteDiver(id: number): Observable<any> {
     return this.http.delete<Diver>(this.diverUrl + id);
   }
 }

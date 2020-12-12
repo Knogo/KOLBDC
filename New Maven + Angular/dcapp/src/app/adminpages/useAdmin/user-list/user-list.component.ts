@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit {
 
   constructor(private userService: UserService, private titleService: Title, private router: Router, private route: ActivatedRoute) { }
 
-  deleteUser(id: bigint) {
+  deleteUser(id: number) {
     this.userService.deleteUser(id).subscribe(
       () => {
         this.ngOnInit(); //Refreshes the page

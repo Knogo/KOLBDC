@@ -55,8 +55,8 @@ export class DcrawlerComponent implements OnInit {
     this.diverService.getDiver(localStorage.getItem("id")).subscribe(
       data => {
         this.diver = data;
-        this.keycount = Number(this.diver.keys);
-        this.visionlevel = Number(this.diver.vision);
+        this.keycount = this.diver.keys;
+        this.visionlevel = this.diver.vision;
 
         this.route.paramMap.subscribe(params => {
           var did = params.get('did');
@@ -84,6 +84,33 @@ export class DcrawlerComponent implements OnInit {
       error => {
         this.router.navigateByUrl('../../dungeonlist')
       });
+  }
+
+  gameWin() {
+    if (this.moveCount < this.dungeon.minmoves) {
+      this.dungeon.minmoves = this.moveCount;
+      this.dungeon.highscore = localStorage.getItem("name");
+
+      this.dungeonService.editDungeon(this.dungeon).subscribe(
+        data => {
+          console.log(data);
+        }, error => {
+          console.log(error);
+        }
+      )
+    }
+
+    this.diver.coins = this.diver.coins + 1;
+
+    this.diverService.editDiver(this.diver).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }, () => {
+        this.router.navigateByUrl('diver/dungeonlist');
+      }
+    )
   }
 
   resetDungeon() {
@@ -354,7 +381,10 @@ export class DcrawlerComponent implements OnInit {
 
     if (this.gameWon == true) {
       alert("Game won in " + this.moveCount + " moves!");
-      this.gameWon = false; //Just to stop bothering
+      if (this.moveCount < this.dungeon.minmoves) {
+        alert("You've set a new record!");
+      }
+      this.gameWin();
     }
   }
 

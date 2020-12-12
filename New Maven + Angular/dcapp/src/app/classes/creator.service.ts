@@ -33,7 +33,7 @@ export class CreatorService {
   }
 
   //Admin only
-  public deleteCreator(id: bigint): Observable<any> {
+  public deleteCreator(id: number): Observable<any> {
     return this.http.delete<Creator>(this.creatorUrl + id);
   }
 }

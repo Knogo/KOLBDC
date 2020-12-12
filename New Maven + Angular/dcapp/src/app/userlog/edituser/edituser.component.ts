@@ -21,9 +21,7 @@ export class EdituserComponent implements OnInit {
     this.user.name = localStorage.getItem("name");
     this.user.password = localStorage.getItem("password");
     this.user.role = localStorage.getItem("role");
-    let temp; //Act as bigint
-    temp = localStorage.getItem("id"); //Convert to bigint
-    this.user.id = temp; //Now we've got a bigint somehow... (casting directly didn't work)
+    this.user.id = Number(localStorage.getItem("id")); 
     this.url = '/' + this.user.role;
   }
 

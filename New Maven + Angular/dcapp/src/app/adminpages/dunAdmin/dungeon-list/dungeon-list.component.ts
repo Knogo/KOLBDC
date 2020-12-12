@@ -14,7 +14,7 @@ export class DungeonListComponent implements OnInit {
 
   constructor(private dungeonService: DungeonService, private titleService: Title, private router: Router) { }
 
-  deleteDungeon(did: bigint) {
+  deleteDungeon(did: number) {
     this.dungeonService.deleteDungeon(did).subscribe(
       () => {
         this.ngOnInit(); //Refreshes the page

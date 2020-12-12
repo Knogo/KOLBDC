@@ -1,5 +1,5 @@
 export class Creator {
-    coins: bigint;
-    maxdims: bigint;
-    id: bigint;
+    coins: number;
+    maxdims: number;
+    id: number;
 }

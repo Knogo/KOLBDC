@@ -3,6 +3,6 @@ export class Dungeon {
     cname: string;
     layout: string;
     highscore: string;
-    minmoves: bigint;
-    did: bigint;
+    minmoves: number;
+    did: number;
 }

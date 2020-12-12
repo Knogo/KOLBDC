@@ -14,7 +14,7 @@ export class DiverListComponent implements OnInit {
 
   constructor(private diverService: DiverService, private titleService: Title, private router: Router) { }
 
-  deleteDiver(id: bigint) {
+  deleteDiver(id: number) {
     this.diverService.deleteDiver(id).subscribe(
       () => {
         this.ngOnInit(); //Refreshes the page

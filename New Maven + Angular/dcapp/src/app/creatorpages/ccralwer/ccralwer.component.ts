@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Creator } from 'src/app/classes/creator';
+import { CreatorService } from 'src/app/classes/creator.service';
 import { Dungeon } from 'src/app/classes/dungeon';
 import { DungeonService } from 'src/app/classes/dungeon.service';
 import { HelpmenuComponent } from 'src/app/dungeonpages/helpmenu/helpmenu.component';
@@ -13,6 +15,7 @@ import { HelpmenuComponent } from 'src/app/dungeonpages/helpmenu/helpmenu.compon
 })
 export class CcralwerComponent implements OnInit {
   dungeon: Dungeon = new Dungeon();
+  creator: Creator = new Creator();
 
   viewer: any;
   pcanvas: any;
@@ -46,7 +49,7 @@ export class CcralwerComponent implements OnInit {
   @ViewChild('key') key;
   @ViewChild('lock') lock;
 
-  constructor(public helpMenuDialog: MatDialog, private titleService: Title, private dungeonService: DungeonService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public helpMenuDialog: MatDialog, private titleService: Title, private dungeonService: DungeonService, private creatorService: CreatorService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -70,6 +73,29 @@ export class CcralwerComponent implements OnInit {
           this.canvasContext();
           this.resetDungeon();
         });
+    });
+  }
+
+  gameWin() {
+    this.creatorService.getCreator(localStorage.getItem("id")).subscribe(
+    data => {
+      console.log(data);
+      this.creator = data;
+      this.creator.coins = this.creator.coins + 1;
+
+      this.creatorService.editCreator(this.creator).subscribe(
+        data => {
+          console.log(data);
+        }, error => {
+          console.log(error);
+        }, () => {
+          this.router.navigateByUrl('creator/dungeonlist');
+        }
+      )
+    }, error => {
+      console.log(error);
+      console.log("Local storage didn't come fast enough... another drawback");
+      this.router.navigateByUrl('../../dungeonlist');
     });
   }
 
@@ -341,7 +367,10 @@ export class CcralwerComponent implements OnInit {
 
     if (this.gameWon == true) {
       alert("Game won in " + this.moveCount + " moves!");
-      this.gameWon = false; //Just to stop bothering
+      if (this.moveCount < this.dungeon.minmoves) {
+        alert("If you were a diver, you'd have set a new record!");
+      }
+      this.gameWin();
     }
   }
 

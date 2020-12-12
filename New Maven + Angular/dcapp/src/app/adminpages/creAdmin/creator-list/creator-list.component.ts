@@ -14,7 +14,7 @@ export class CreatorListComponent implements OnInit {
 
   constructor(private creatorService: CreatorService, private titleService: Title, private router: Router) { }
 
-  deleteCreator(id: bigint) {
+  deleteCreator(id: number) {
     this.creatorService.deleteCreator(id).subscribe(
       () => {
         this.ngOnInit(); //Refreshes the page

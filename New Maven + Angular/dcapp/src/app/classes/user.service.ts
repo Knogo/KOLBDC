@@ -20,7 +20,7 @@ export class UserService {
   } 
 
   //Admin only -- Login does the work already (Protect other users)
-  public getUser(id: string): Observable<any> {
+  public getUser(id: number): Observable<any> {
     return this.http.get<User>(this.userUrl + id);
   } 
 
@@ -37,7 +37,7 @@ export class UserService {
   }
 
   //Admins only -- Delete cascades to subtables (diver/creator)
-  public deleteUser(id: bigint): Observable<any> {
+  public deleteUser(id: number): Observable<any> {
     return this.http.delete<User>(this.userUrl + id);
   }
 
