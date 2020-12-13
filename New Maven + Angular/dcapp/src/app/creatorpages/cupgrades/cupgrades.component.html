@@ -1,1 +1,27 @@
-<p>cupgrades works!</p>
+<h2>
+    <div class="cointext">Coins = {{currentCoins}}</div>
+</h2>
+
+<body>
+    <img #wall style="display: none" src="../../../assets/svg/wall.svg">
+
+    <div class="upgradebox">
+        <h1>Dimension Upgrades - Current max dimensions: {{currentDims}}</h1>
+        <p></p>
+        <div class="cc">
+            <canvas id="dimension" style="z-index: 1;"></canvas>
+            <canvas id="dbg" style="z-index: 0;"></canvas>
+        </div>
+        <p></p>
+        <div>Increases the max dimensions when creating a new dungeon.</div>
+        <p></p>
+        <footer>
+            <span class="costs">Costs {{upgradeCost}} to upgrade.</span>
+            <button class="bottom" id="dbuy" (click)="dbuy()">Buy Upgrade</button> <p></p>
+            <span class="invalidLabel" *ngIf="necD">Not enough coins.</span>
+        </footer>
+    </div>
+
+    <p></p>
+    <button [routerLink]="['..']">Back to Home</button>
+</body>

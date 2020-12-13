@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
       this.userService.logout();
     }
 
-    this.user.name = "bob";
-    this.user.password = "cat";
+    this.user.name = "lux";
+    this.user.password = "ezreal";
   }
 
   toggleSH() {

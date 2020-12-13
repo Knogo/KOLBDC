@@ -87,7 +87,7 @@ public class TestCreate {
         
         try {
             conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'lux', 'ezreal', 'creator')");
-            conn.createStatement().execute("INSERT INTO CREATOR VALUES (10002, 20, 25)");
+            conn.createStatement().execute("INSERT INTO CREATOR VALUES (10002, 20, 20)");
         } catch (SQLException sQLException) {   }
         
         try {

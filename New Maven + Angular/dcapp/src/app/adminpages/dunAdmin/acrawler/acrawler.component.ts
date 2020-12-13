@@ -341,7 +341,7 @@ export class AcrawlerComponent implements OnInit {
 
     if (this.gameWon == true) {
       alert("Game won in " + this.moveCount + " moves!");
-      this.gameWon = false; //Just to stop bothering
+      this.router.navigateByUrl('admin/dungeonlist');
     }
   }
 
