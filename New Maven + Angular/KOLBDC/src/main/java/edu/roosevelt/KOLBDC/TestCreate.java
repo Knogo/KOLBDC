@@ -64,7 +64,7 @@ public class TestCreate {
         
         try {
                 conn.createStatement().execute("INSERT INTO USERS VALUES (DEFAULT, 'diver', 'diver', 'diver')");
-                conn.createStatement().execute("INSERT INTO DIVER VALUES (10001, 0, 0, 0)");
+                conn.createStatement().execute("INSERT INTO DIVER VALUES (10001, 10, 1, 1)");
         } catch (SQLException sQLException) {   }
 
         succeeds = false;

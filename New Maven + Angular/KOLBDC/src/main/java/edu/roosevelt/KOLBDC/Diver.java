@@ -27,9 +27,9 @@ public class Diver implements Serializable  {
     @Min(value = 0)
     private int coins = 0;
     
-    @Min(value = 0)
+    @Min(value = 1)
     @Max(value = 4)
-    private int vision = 0;
+    private int vision = 1;
     
     @Min(value = 0)
     @Max(value = 10)

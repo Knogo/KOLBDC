@@ -1,1 +1,46 @@
-<p>dupgrades works!</p>
+<h2>
+    <div class="cointext">Coins = {{currentCoins}}</div>
+</h2>
+
+<body>
+    <img #eye style="display: none" src="../../../assets/svg/eye.svg">
+    <img #key style="display: none" src="../../../assets/svg/key.svg">
+
+    <div class="upgradebox">
+        <h1>Vision Upgrades - Current level: {{currentVision}}</h1>
+        <p></p>
+        <div class="cc">
+            <canvas id="vision" style="z-index: 1;"></canvas>
+            <canvas id="vbg" style="z-index: 0;"></canvas>
+        </div>
+        <p></p>
+        <div>Increases the number of tiles revealed when moving around in the dungeon. The higher the level, the bigger
+            the square is around the player.</div>
+        <p></p>
+        <footer>
+            <span class="costs">Costs {{currentVision}} to upgrade.</span>
+            <button class="bottom" id="vbuy" (click)="vbuy()">Buy Upgrade</button> <p></p>
+            <span class="invalidLabel" *ngIf="necV">Not enough coins.</span>
+        </footer>
+    </div>
+
+    <div class="upgradebox">
+        <h1>Key Upgrades - Current level: {{currentKeys}}</h1>
+        <p></p>
+        <div class="cc">
+            <canvas id="key" style="z-index: 1;"></canvas>
+            <canvas id="kbg" style="z-index: 0;"></canvas>
+        </div>
+        <p></p>
+        <div>Increases the amount of starting keys when entering a dungeon.</div>
+        <p></p>
+        <footer>
+            <span class="costs">Costs {{currentKeys}} to upgrade.</span>
+            <button class="bottom" id="kbuy" (click)="kbuy()">Buy Upgrade</button> <p></p>
+            <span class="invalidLabel" *ngIf="necK">Not enough coins.</span>
+        </footer>
+    </div>
+
+    <p></p>
+    <button [routerLink]="['..']">Back to Home</button>
+</body>
