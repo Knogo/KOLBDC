@@ -132,11 +132,8 @@ export class DupgradesComponent implements OnInit {
         break;
       case "keys":
         switch (this.currentKeys) {
-          case 0:
-            this.kbgctx.fillStyle = "#FFFFFF";
-            break;
           case 1:
-            this.kbgctx.fillStyle = "#F1DBFF";
+            this.kbgctx.fillStyle = "#FFFFFF";
             break;
           case 2:
             this.kbgctx.fillStyle = "#E5BCFF";

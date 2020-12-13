@@ -31,9 +31,9 @@ public class Diver implements Serializable  {
     @Max(value = 4)
     private int vision = 1;
     
-    @Min(value = 0)
+    @Min(value = 1)
     @Max(value = 10)
-    private int keys = 0;
+    private int keys = 1;
 
     public int getID() {
         return ID;
