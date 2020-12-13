@@ -26,7 +26,7 @@ export class DiverListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("List of Dungeons");
+    this.titleService.setTitle("List of Divers");
     this.diverService.getAllDivers().subscribe(data => {
       this.diver = data;
     });

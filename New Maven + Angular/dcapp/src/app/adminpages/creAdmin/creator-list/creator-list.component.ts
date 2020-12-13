@@ -26,7 +26,7 @@ export class CreatorListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("List of Dungeons");
+    this.titleService.setTitle("List of Creators");
     this.creatorService.getAllCreators().subscribe(data => {
       this.creator = data;
     });

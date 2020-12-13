@@ -60,7 +60,7 @@ export class DcrawlerComponent implements OnInit {
 
         this.route.paramMap.subscribe(params => {
           var did = params.get('did');
-          this.titleService.setTitle("Dungeon Crawling" + did);
+          this.titleService.setTitle("Dungeon Crawling: " + did);
           this.dungeonService.getDungeon(did).subscribe(
             data => {
               this.dungeon = data;
