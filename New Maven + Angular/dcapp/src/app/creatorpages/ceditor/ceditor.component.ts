@@ -269,6 +269,9 @@ export class CeditorComponent implements OnInit {
 
     if (this.tileMap[y][x] == 3) { //If that position was the player
       this.goalcount--;
+      if (this.goalcount < 1) {
+        this.testbtn.disabled = true;
+      }
     }
 
     //If playertile selected and player has already been set
