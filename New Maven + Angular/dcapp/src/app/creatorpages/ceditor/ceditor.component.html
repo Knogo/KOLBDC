@@ -8,8 +8,7 @@
             *ngIf="name.invalid && (name.touched || name.dirty)">(Dungeon name cannot be blank!) </span>
         <p></p>
 
-        <span [ngClass]="{'invalidLabel': (cname.invalid && (cname.touched || cname.dirty))}"> Creator Name:
-        </span>
+        <span>Creator Name: </span>
         <input type="text" [ngClass]="{'invalidTB': (cname.invalid && (cname.touched || cname.dirty))}" maxlength="30"
             [(ngModel)]="dungeon.cname" required name="cname" #cname="ngModel">
         <p></p>

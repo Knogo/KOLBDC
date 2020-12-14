@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
     // this.user.name = "diver";
     // this.user.password = "diver";
 
-    this.user.name = "creator";
-    this.user.password = "creator";
+    // this.user.name = "creator";
+    // this.user.password = "creator";
 
-    // this.user.name = "admin";
-    // this.user.password = "admin";
+    this.user.name = "admin";
+    this.user.password = "admin";
   }
 
   toggleSH() {
