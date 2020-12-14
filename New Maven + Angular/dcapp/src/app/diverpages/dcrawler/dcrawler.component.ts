@@ -380,7 +380,6 @@ export class DcrawlerComponent implements OnInit {
     this.moveValid = false;
 
     if (this.gameWon == true) {
-      alert("Game won in " + this.moveCount + " moves!");
       if (this.moveCount < this.dungeon.minmoves) {
         alert("You've set a new record!");
       }

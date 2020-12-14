@@ -1,1 +1,86 @@
-<p>ceditor works!</p>
+<div id="dstate">
+    <form (ngSubmit)="submitDetails(myform)" novalidate #myform="ngForm">
+        <span>Dungeon Name: </span>
+        <input type="text" [ngClass]="{'invalidTB': (name.invalid && (name.touched || name.dirty))}" maxlength="30"
+            [(ngModel)]="dungeon.name" required name="name" #name="ngModel">
+        <p></p>
+        <span [ngClass]="{'invalidLabel': (name.invalid && (name.touched || name.dirty))}"
+            *ngIf="name.invalid && (name.touched || name.dirty)">(Dungeon name cannot be blank!) </span>
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (cname.invalid && (cname.touched || cname.dirty))}"> Creator Name:
+        </span>
+        <input type="text" [ngClass]="{'invalidTB': (cname.invalid && (cname.touched || cname.dirty))}" maxlength="30"
+            [(ngModel)]="dungeon.cname" required name="cname" #cname="ngModel">
+        <p></p>
+        <span [ngClass]="{'invalidLabel': (cname.invalid && (cname.touched || cname.dirty))}"
+            *ngIf="cname.invalid && (cname.touched || cname.dirty)">(Creator name cannot be blank!) </span>
+        <p></p>
+
+        <span>Dungeon Dimensions:</span>
+        <input style="width: 40px" type="number" min="5" id="xdim" name="xdim" required [ngModel]="xdim">
+        <input style="width: 40px" type="number" min="5" id="ydim" name="ydim" required [ngModel]="ydim">
+        <p></p>
+
+        <input style="font-size: 20px" type="reset" value="Reset Form">
+        <input style="font-size: 20px" type="submit" value="Submit" [disabled]="!myform.form.valid">
+    </form>
+</div>
+
+<div id="lstate" style="display: none">
+    <div id="tileSelector">
+        <span>Tile Selector:</span>
+        <p></p>
+        <button style="background-color: white" class="tileS" (click)="choosetile('Open')">Open</button>
+        <button style="background-color: rgb(73, 73, 73)" class="tileS" (click)="choosetile('Wall')">Wall</button>
+        <p></p>
+        <button style="background-color: #93FF70" class="tileS" (click)="choosetile('Player')">Player</button>
+        <button style="background-color: yellow" class="tileS" (click)="choosetile('Exit')">Exit</button>
+        <p></p>
+        <button style="background-color: #03d7fc" class="tileS" (click)="choosetile('Enemy')">Enemy</button>
+        <button style="background-color: #7F5F00" class="tileS" (click)="choosetile('Door')">Door</button>
+        <p></p>
+        <span>Currently selected: {{currentSelection}}</span>
+        <p></p>
+        <button (click)="backDetail()">Back</button>
+        <button id="testbtn" disabled="true" (click)="testLayout()">Test Dungeon</button>
+    </div>
+    <div id="lecc" (mousedown)="changeTile($event)">
+        <canvas id="grid" style="position: absolute; z-index: 1"></canvas>
+        <canvas id="tiles" style="position: absolute; z-index: 0"></canvas>
+    </div>
+</div>
+
+<div id="tstate" style="display: none">
+    <img #cat style = "display: none" src = "../../../assets/svg/cat.svg">
+    <img #door style = "display: none" src = "../../../assets/svg/door.svg">
+    <img #fish style = "display: none" src = "../../../assets/svg/fish.svg">
+    <img #key style = "display: none" src = "../../../assets/svg/key.svg">
+    <img #lock style = "display: none" src = "../../../assets/svg/lock.svg">
+    <div id="canvasContainer" (window:keydown)="movePlayer($event)"
+        style="position: absolute; left: 10px; top: 15px; overflow: hidden;">
+        <canvas id="player" style="position: absolute; z-index: 4;"></canvas>
+        <canvas id="fog" style="position: absolute; z-index: 2;"></canvas>
+        <canvas id="darkness" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>
+        <canvas id="map" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+        <canvas id="background" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+    </div>
+
+    <div id="menu">
+        <p></p>
+        <button class="arrows" style="margin-left: 35%; margin-top: 100%;" (click)="move('up')">↑</button>
+        <div style="margin-left: 9%;">
+            <button class="arrows" (click)="move('left')">←</button>
+            <button class="arrows" (click)="move('down')">↓</button>
+            <button class="arrows" (click)="move('right')">→</button>
+            <p></p>
+        </div>
+        <button class="dc" id="reset" style="background-color: red;" (click)="resetDungeon()">Reset Dungeon</button>
+        <p></p>
+    </div>
+
+    <button class="last" style="left: 10px" (click)="backLayout()">Back</button>
+</div>
+
+<p></p>
+<button id="backhome" [routerLink]="['..']">Back to Home</button>

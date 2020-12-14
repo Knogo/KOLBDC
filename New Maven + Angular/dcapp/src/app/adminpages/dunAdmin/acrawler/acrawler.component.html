@@ -17,7 +17,9 @@
         <button id="helpMenu" style="margin-top: 10%; background-color: rgb(255, 145, 0);" (click)="openHelpMenu()">How
             To Play</button>
         <p></p>
-        <button class="arrows" style="margin-left: 35%; margin-top: 100%;" (click)="move('up')">↑</button>
+        <span>Moves: {{moveCount}}</span>
+        <p></p>
+        <button class="arrows" style="margin-left: 35%; margin-top: 90%;" (click)="move('up')">↑</button>
         <div style="margin-left: 9%;">
             <button class="arrows" (click)="move('left')">←</button>
             <button class="arrows" (click)="move('down')">↓</button>

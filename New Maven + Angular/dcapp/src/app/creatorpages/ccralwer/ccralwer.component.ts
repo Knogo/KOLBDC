@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -49,7 +49,7 @@ export class CcralwerComponent implements OnInit {
   @ViewChild('key') key;
   @ViewChild('lock') lock;
 
-  constructor(public helpMenuDialog: MatDialog, private titleService: Title, private dungeonService: DungeonService, private creatorService: CreatorService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public helpMenuDialog: MatDialog, private titleService: Title, private dungeonService: DungeonService, private creatorService: CreatorService, private route: ActivatedRoute, private router: Router, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -366,10 +366,6 @@ export class CcralwerComponent implements OnInit {
     this.moveValid = false;
 
     if (this.gameWon == true) {
-      alert("Game won in " + this.moveCount + " moves!");
-      if (this.moveCount < this.dungeon.minmoves) {
-        alert("If you were a diver, you'd have set a new record!");
-      }
       this.gameWin();
     }
   }

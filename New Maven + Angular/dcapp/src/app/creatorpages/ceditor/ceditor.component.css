@@ -1,0 +1,81 @@
+.invalidLabel {
+    color: lightcoral;
+}
+
+div#tileSelector {
+    position: absolute;
+    font-size: 25px;
+    width: 350px;
+    height: 700px;
+}
+
+form {
+    font-size: 25px;
+}
+
+input {
+    height: 30px;
+    font-size: 20px;
+}
+
+div#lecc {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    left: 380px;
+    top: 30px;
+    width: 150px;
+    height: 150px;
+}
+
+button {
+    font-size: 30px;
+    width: 175px;
+}
+
+button.tileS {
+    font-size: 40px;
+    width: 175px;
+    height: 45px;
+}
+
+button#backhome {
+    position: absolute;
+    top: 800px;
+}
+
+div#menu {
+    width: 250px;
+    height: 675px;
+    background-color: #1c1c1c;
+    color: white;
+    position: absolute;
+    top: 15px;
+    left: 695px;
+}
+
+button.dc {
+    position: relative;
+    margin-left: 10%;
+    width: 80%;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 12px 15px 3px 15px;
+    text-align: center;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button.arrows {
+    margin-left: 0px;
+    width: 30%;
+}
+
+button.last {
+    position: absolute;
+    top: 700px;
+}

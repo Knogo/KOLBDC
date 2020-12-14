@@ -278,7 +278,6 @@ export class AcrawlerComponent implements OnInit {
       ((2 * this.visionlevel) + 1) * this.scale);
   }
 
-  gameWon: Boolean;
   moveValid: Boolean;
   moveCount: number;
 
@@ -338,11 +337,6 @@ export class AcrawlerComponent implements OnInit {
         break;
     }
     this.moveValid = false;
-
-    if (this.gameWon == true) {
-      alert("Game won in " + this.moveCount + " moves!");
-      this.router.navigateByUrl('admin/dungeonlist');
-    }
   }
 
   keyUpdate() {
@@ -364,7 +358,6 @@ export class AcrawlerComponent implements OnInit {
           this.moveValid = false;
         }
         else if (this.tileMap[this.currentPosition[1]][this.currentPosition[0] - 1] == 3) { //Goal
-          this.gameWon = true;
         }
         else if (this.tileMap[this.currentPosition[1]][this.currentPosition[0] - 1] == 4) { //Enemy
           this.tileMap[this.currentPosition[1]][this.currentPosition[0] - 1] = 0;
@@ -387,7 +380,6 @@ export class AcrawlerComponent implements OnInit {
           this.moveValid = false;
         }
         else if (this.tileMap[this.currentPosition[1] - 1][this.currentPosition[0]] == 3) { //Goal
-          this.gameWon = true;
         }
         else if (this.tileMap[this.currentPosition[1] - 1][this.currentPosition[0]] == 4) { //Enemy
           this.tileMap[this.currentPosition[1] - 1][this.currentPosition[0]] = 0;
@@ -410,7 +402,6 @@ export class AcrawlerComponent implements OnInit {
           this.moveValid = false;
         }
         else if (this.tileMap[this.currentPosition[1]][this.currentPosition[0] + 1] == 3) { //Goal
-          this.gameWon = true;
         }
         else if (this.tileMap[this.currentPosition[1]][this.currentPosition[0] + 1] == 4) { //Enemy
           this.tileMap[this.currentPosition[1]][this.currentPosition[0] + 1] = 0;
@@ -433,7 +424,6 @@ export class AcrawlerComponent implements OnInit {
           this.moveValid = false;
         }
         else if (this.tileMap[this.currentPosition[1] + 1][this.currentPosition[0]] == 3) { //Goal
-          this.gameWon = true;
         }
         else if (this.tileMap[this.currentPosition[1] + 1][this.currentPosition[0]] == 4) { //Enemy
           this.tileMap[this.currentPosition[1] + 1][this.currentPosition[0]] = 0;
