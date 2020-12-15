@@ -7,7 +7,7 @@ Maxdims - input type number w/ min 5, max 25, step 5 -->
 
     <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
 
-        ID: <select name="ID">
+        ID: <select name="ID" [(ngModel)]="creator.id">
             <option *ngFor="let each of noncreators">{{each}} </option>
         </select>
         <p></p>

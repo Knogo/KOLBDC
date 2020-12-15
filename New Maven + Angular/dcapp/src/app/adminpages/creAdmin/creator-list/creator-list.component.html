@@ -11,7 +11,7 @@
           <td class="data">{{each.coins}}</td>
           <td class="data">{{each.maxdims}}</td>
           <td class="links"><a [routerLink]="['./edit', each.id]">Edit Creator</a></td>
-          <td class="links"><a (click)="deleteCreator(each.did)">Delete Creator</a></td>
+          <td class="links"><a (click)="deleteCreator(each.id)">Delete Creator</a></td>
        </tr>
     </table> <p></p>
     <button [routerLink]="['./create']">Create Creator</button><p></p>

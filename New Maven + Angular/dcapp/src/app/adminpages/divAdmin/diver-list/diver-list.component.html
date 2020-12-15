@@ -13,7 +13,7 @@
          <td class="data">{{each.vision}}</td>
          <td class="data">{{each.keys}}</td>
          <td class="links"><a [routerLink]="['./edit', each.id]">Edit Diver</a></td>
-         <td class="links"><a (click)="deleteDiver(each.did)">Delete Diver</a></td>
+         <td class="links"><a (click)="deleteDiver(each.id)">Delete Diver</a></td>
       </tr>
    </table>
    <p></p>

@@ -4,7 +4,7 @@
 
     <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
 
-        ID: <select name="ID">
+        ID: <select name="ID" [(ngModel)]="diver.id">
             <option *ngFor="let each of nondivers">{{each}} </option>
         </select>
         <p></p>

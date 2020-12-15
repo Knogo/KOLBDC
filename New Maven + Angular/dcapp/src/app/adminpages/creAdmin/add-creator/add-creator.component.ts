@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Creator } from 'src/app/classes/creator';
 import { CreatorService } from 'src/app/classes/creator.service';
 import { User } from 'src/app/classes/user';
@@ -18,7 +19,7 @@ export class AddCreatorComponent implements OnInit {
   creatorid: Array<number>;
   noncreators: Array<number>;
 
-  constructor(private titleService: Title, private userService: UserService, private creatorService: CreatorService) { }
+  constructor(private titleService: Title, private userService: UserService, private creatorService: CreatorService, private router: Router) { }
 
   ngOnInit(): void {
     this.creatorService.getAllCreators().subscribe(
@@ -31,16 +32,19 @@ export class AddCreatorComponent implements OnInit {
             this.noncreators = this.user.map(a => a.id);
             this.noncreators = this.noncreators.filter(val => !this.creatorid.includes(val));
             console.log(this.noncreators);
+            this.creator.id = this.noncreators[0];
             this.creator.maxdims = 5;
-            this.creator.coins = 1;
+            this.creator.coins = 0;
           }
         );
       }
     );
   }
-  onSubmit() {
 
-    this.creatorService.editCreator(this.creator).subscribe(
+  onSubmit() {
+    console.log(this.creator);
+
+    this.creatorService.addCreator(this.creator).subscribe(
       data => {
         console.log(data);
       },
@@ -48,6 +52,7 @@ export class AddCreatorComponent implements OnInit {
         console.error(error);
       },
       () => {
+        this.router.navigateByUrl("admin/creatorlist");
       }
     )
   }

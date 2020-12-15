@@ -21,7 +21,7 @@ export class AddDiverComponent implements OnInit {
   diverid: Array<number>;
   nondivers: Array<number>;
 
-  constructor(private titleService: Title, private userService: UserService, private diverService: DiverService) { }
+  constructor(private titleService: Title, private userService: UserService, private diverService: DiverService, private router: Router) { }
 
   ngOnInit(): void {
     this.diverService.getAllDivers().subscribe(
@@ -34,6 +34,8 @@ export class AddDiverComponent implements OnInit {
             this.nondivers = this.user.map(a => a.id);
             this.nondivers = this.nondivers.filter(val => !this.diverid.includes(val));
             console.log(this.nondivers);
+            
+            this.diver.id = this.nondivers[0];
             this.diver.keys = 1;
             this.diver.vision = 1;
             this.diver.coins = 0;
@@ -44,8 +46,9 @@ export class AddDiverComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.diver);
 
-    this.diverService.editDiver(this.diver).subscribe(
+    this.diverService.addDiver(this.diver).subscribe(
       data => {
         console.log(data);
       },
@@ -53,6 +56,7 @@ export class AddDiverComponent implements OnInit {
         console.error(error);
       },
       () => {
+        this.router.navigateByUrl("admin/diverlist");
       }
     )
   }
