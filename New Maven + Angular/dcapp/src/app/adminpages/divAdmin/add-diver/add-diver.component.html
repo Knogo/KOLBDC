@@ -1,7 +1,40 @@
-<p>add-diver works!</p>
 
-<!-- Add diver needs:
-ID (get all user id's, get all diver id's, only display those without)
-Coins (only positive, minval = 0)
-Vision - input type number w/ min 1, max 4
-Keys - input type number w/ min 1 max 10 -->
+<body>
+    <h1>Add Diver</h1>
+
+    <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+
+        ID: <select name="ID">
+            <option *ngFor="let each of nondivers">{{each}} </option>
+        </select>
+        <p></p>
+        
+        <span [ngClass]="{'invalidLabel': (coins.invalid && (coins.touched || coins.dirty))}"> Coins:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (coins.invalid && (coins.touched || coins.dirty))}" min="0"
+            [(ngModel)]="diver.coins" required name="coins" #coins="ngModel">
+        
+
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (keys.invalid && (keys.touched || keys.dirty))}"> Keys:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (keys.invalid && (keys.touched || keys.dirty))}" max="10" min="1"
+            [(ngModel)]="diver.keys" required name="keys" #keys="ngModel">
+     
+
+        <p></p>
+        
+        <span [ngClass]="{'invalidLabel': (vision.invalid && (vision.touched || vision.dirty))}"> Vision:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (vision.invalid && (vision.touched || vision.dirty))}"
+            max= "4" min= "1" [(ngModel)]="diver.vision" required name="vision" #vision="ngModel">
+
+        <p></p>
+
+        <input type="submit" value="Submit" [disabled]="!myform.form.valid">
+        <input type="reset" value="Reset Form">
+        <p></p>
+        <input type="button" value="To Home" [routerLink]="['../..']">
+    </form>
+</body> 

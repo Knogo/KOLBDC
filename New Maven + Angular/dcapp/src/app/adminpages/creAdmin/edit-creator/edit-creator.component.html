@@ -1,1 +1,31 @@
-<p>edit-creator works!</p>
+<body>
+    <h1>Edit Creator</h1>
+
+    <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+
+        <span>Creator id: {{creator.id}} </span>
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (coins.invalid && (coins.touched || coins.dirty))}"> Coins:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (coins.invalid && (coins.touched || coins.dirty))}" min="0"
+            [(ngModel)]="creator.coins" required name="coins" #coins="ngModel">
+        
+
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (maxdims.invalid && (maxdims.touched || maxdims.dirty))}"> maxdims:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (maxdims.invalid && (maxdims.touched || maxdims.dirty))}" 
+        min="5" max="25" step="5"
+            [(ngModel)]="creator.maxdims" required name="maxdims" #maxdims="ngModel">
+        
+
+        <p></p>
+
+        <input type="submit" value="Submit" [disabled]="!myform.form.valid">
+        <input type="reset" value="Reset Form">
+        <p></p>
+        <input type="button" value="To Home" [routerLink]="['../..']">
+    </form>
+</body> 

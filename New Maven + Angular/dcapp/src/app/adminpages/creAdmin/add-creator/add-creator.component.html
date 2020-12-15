@@ -1,6 +1,37 @@
-<p>add-creator works!</p>
-
 <!-- Add creator needs:
 ID (get all user id's, get all creator id's, only display those without)
 Coins (only positive, minval = 0)
 Maxdims - input type number w/ min 5, max 25, step 5 -->
+<body>
+    <h1>Add Creator</h1>
+
+    <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+
+        ID: <select name="ID">
+            <option *ngFor="let each of noncreators">{{each}} </option>
+        </select>
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (coins.invalid && (coins.touched || coins.dirty))}"> Coins:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (coins.invalid && (coins.touched || coins.dirty))}" min="0"
+            [(ngModel)]="creator.coins" required name="coins" #coins="ngModel">
+        
+
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (maxdims.invalid && (maxdims.touched || maxdims.dirty))}"> maxdims:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (maxdims.invalid && (maxdims.touched || maxdims.dirty))}" 
+        min="5" max="25" step="5"
+            [(ngModel)]="creator.maxdims" required name="maxdims" #maxdims="ngModel">
+        
+
+        <p></p>
+
+        <input type="submit" value="Submit" [disabled]="!myform.form.valid">
+        <input type="reset" value="Reset Form">
+        <p></p>
+        <input type="button" value="To Home" [routerLink]="['../..']">
+    </form>
+</body> 

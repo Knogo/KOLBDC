@@ -1,1 +1,39 @@
-<p>edit-diver works!</p>
+ <body>
+    <h1>Edit Diver</h1>
+
+    <form (ngSubmit)="onSubmit()" novalidate #myform="ngForm">
+
+        <span>Diver id: {{diver.id}} </span>
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (coins.invalid && (coins.touched || coins.dirty))}"> Coins:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (coins.invalid && (coins.touched || coins.dirty))}" min="0"
+            [(ngModel)]="diver.coins" required name="coins" #coins="ngModel">
+        
+
+        <p></p>
+
+        <span [ngClass]="{'invalidLabel': (keys.invalid && (keys.touched || keys.dirty))}"> Keys:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (keys.invalid && (keys.touched || keys.dirty))}" max="10" min="1"
+            [(ngModel)]="diver.keys" required name="keys" #keys="ngModel">
+     
+
+        <p></p>
+        
+        <span [ngClass]="{'invalidLabel': (vision.invalid && (vision.touched || vision.dirty))}"> vision:
+        </span>
+        <input type="number" [ngClass]="{'invalidTB': (vision.invalid && (vision.touched || vision.dirty))}"
+            max= "4" min= "1" [(ngModel)]="diver.vision" required name="vision" #vision="ngModel">
+
+        <p></p>
+
+
+
+        <input type="submit" value="Submit" [disabled]="!myform.form.valid">
+        <input type="reset" value="Reset Form">
+        <p></p>
+        <input type="button" value="To Home" [routerLink]="['../..']">
+    </form>
+</body> 
