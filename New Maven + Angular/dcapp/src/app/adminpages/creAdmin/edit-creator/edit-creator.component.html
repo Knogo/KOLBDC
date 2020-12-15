@@ -14,7 +14,7 @@
 
         <p></p>
 
-        <span [ngClass]="{'invalidLabel': (maxdims.invalid && (maxdims.touched || maxdims.dirty))}"> maxdims:
+        <span [ngClass]="{'invalidLabel': (maxdims.invalid && (maxdims.touched || maxdims.dirty))}"> Max Dimensions:
         </span>
         <input type="number" [ngClass]="{'invalidTB': (maxdims.invalid && (maxdims.touched || maxdims.dirty))}" 
         min="5" max="25" step="5"

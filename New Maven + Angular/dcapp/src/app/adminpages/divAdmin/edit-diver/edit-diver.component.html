@@ -22,7 +22,7 @@
 
         <p></p>
         
-        <span [ngClass]="{'invalidLabel': (vision.invalid && (vision.touched || vision.dirty))}"> vision:
+        <span [ngClass]="{'invalidLabel': (vision.invalid && (vision.touched || vision.dirty))}"> Vision:
         </span>
         <input type="number" [ngClass]="{'invalidTB': (vision.invalid && (vision.touched || vision.dirty))}"
             max= "4" min= "1" [(ngModel)]="diver.vision" required name="vision" #vision="ngModel">

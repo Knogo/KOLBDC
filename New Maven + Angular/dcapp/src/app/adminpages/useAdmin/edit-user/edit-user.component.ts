@@ -15,7 +15,7 @@ export class EditUserComponent implements OnInit {
   nameAlreadyExists = false; 
   url: string; 
 
-  constructor(private titleService: Title, private userService: UserService, private route: ActivatedRoute, private router: Router  ) { }
+  constructor(private titleService: Title, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -43,7 +43,7 @@ export class EditUserComponent implements OnInit {
 
   onSubmit() {
     if (this.user.id == parseInt(localStorage.getItem("id"))){
-      this.user.role = localStorage.getItem("role");
+      this.user.role = localStorage.getItem("role"); //Can't demote yourself as admin
     } 
 
     this.userService.editUser(this.user).subscribe(
@@ -55,19 +55,18 @@ export class EditUserComponent implements OnInit {
           localStorage.setItem("role",data.role);
           localStorage.setItem("id", String(data.id));
         }   
-
         console.log(data);
       },
       error => {
-        console.error(error);
+        if (error.status == '409')
+        {
+          console.error("Username in use.");
+          this.nameAlreadyExists = true;
+        }
       },
       () => {
-
         this.router.navigateByUrl('/admin/userlist');
       }
     )
-      
-
   }
-
 }
