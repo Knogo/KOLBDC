@@ -1,6 +1,6 @@
 # KOLBDC
-Dungeon Crawler - CST467 Web-based database applications
-Contributors: Kenji and Levelle
+Dungeon Crawler - CST467 Web-based database applications.
+Contributors: Kenji and Levelle.
 
 Within the New Maven + Angular folder:
 KOLBDC will be the maven project running spring and jdbc connectivity for a mySQL server for the backend.
