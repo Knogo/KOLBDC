@@ -8,7 +8,7 @@ KOLBDC will be the maven project running spring and jdbc connectivity for a mySQ
 dcapp will be the application, using angular for the frontend.  
 I've decided to leave the two parts seperate so that the components are still visible.  
 
-Preset using a mySQL database with the name KOLB, user and pass kolb (lowercase) within mySQL for the maven project.
+Preset using a mySQL database with the name KOLB, user and pass kolb (lowercase) for the maven project.
 
 Once the maven project is running - dcapp can be run using ng serve dcapp (or with -o option to run a browser instance immediately).
 
